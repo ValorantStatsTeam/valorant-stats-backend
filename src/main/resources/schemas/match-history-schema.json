@@ -1,0 +1,974 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Datum"
+      }
+    }
+  },
+  "required": [
+    "status",
+    "data"
+  ],
+  "definitions": {
+    "Location": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "PlayerInfo": {
+      "type": "object",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "puuid",
+        "name",
+        "tag",
+        "team"
+      ]
+    },
+    "PlayerLocation": {
+      "type": "object",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "view_radians": {
+          "type": "number"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        }
+      },
+      "required": [
+        "puuid",
+        "name",
+        "tag",
+        "team",
+        "view_radians",
+        "location"
+      ]
+    },
+    "Datum": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "players": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Player"
+          }
+        },
+        "observers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Observer"
+          }
+        },
+        "coaches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coach"
+          }
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Round"
+          }
+        },
+        "kills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Kill"
+          }
+        }
+      },
+      "required": [
+        "metadata",
+        "players",
+        "observers",
+        "coaches",
+        "teams",
+        "rounds",
+        "kills"
+      ]
+    },
+    "Metadata": {
+      "type": "object",
+      "properties": {
+        "match_id": {
+          "type": "string"
+        },
+        "map": {
+          "$ref": "#/definitions/Map"
+        },
+        "game_version": {
+          "type": "string"
+        },
+        "game_length_in_ms": {
+          "type": "integer"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "is_completed": {
+          "type": "boolean"
+        },
+        "queue": {
+          "$ref": "#/definitions/Queue"
+        },
+        "season": {
+          "$ref": "#/definitions/Season"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "premier": {
+          "$ref": "#/definitions/Premier"
+          // *** Изменено: добавлена ссылка на Premier ***
+        },
+        "party_rr_penaltys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyPenalty"
+          }
+        },
+        "region": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "match_id",
+        "map",
+        "game_version",
+        "game_length_in_ms",
+        "started_at",
+        "is_completed",
+        "queue",
+        "season",
+        "platform",
+        "premier",
+        "party_rr_penaltys",
+        "region",
+        "cluster"
+      ]
+    },
+    "Premier": {
+      "type": "object",
+      "properties": {
+        "tournament_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "season_id": {
+          "type": "string"
+        },
+        "division": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tournament_id",
+        "name",
+        "season_id",
+        "division"
+      ]
+    },
+    "Map": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Queue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mode_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "mode_type"
+      ]
+    },
+    "Season": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "short": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "short"
+      ]
+    },
+    "PartyPenalty": {
+      "type": "object",
+      "properties": {
+        "party_id": {
+          "type": "string"
+        },
+        "penalty": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "party_id",
+        "penalty"
+      ]
+    },
+    "Player": {
+      "type": "object",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "party_id": {
+          "type": "string"
+        },
+        "agent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "stats": {
+          "$ref": "#/definitions/PlayerStats"
+        },
+        "ability_casts": {
+          "$ref": "#/definitions/AbilityCasts"
+        },
+        "tier": {
+          "$ref": "#/definitions/Tier"
+        },
+        "card_id": {
+          "type": "string"
+        },
+        "title_id": {
+          "type": "string"
+        },
+        "prefered_level_border": {
+          "type": "string"
+        },
+        "account_level": {
+          "type": "integer"
+        },
+        "session_playtime_in_ms": {
+          "type": "integer"
+        },
+        "behavior": {
+          "$ref": "#/definitions/Behavior"
+        },
+        "economy": {
+          "$ref": "#/definitions/Economy"
+        }
+      },
+      "required": [
+        "puuid",
+        "name",
+        "tag",
+        "team_id",
+        "platform",
+        "party_id",
+        "agent",
+        "stats",
+        "ability_casts",
+        "tier",
+        "card_id",
+        "title_id",
+        "prefered_level_border",
+        "account_level",
+        "session_playtime_in_ms",
+        "behavior",
+        "economy"
+      ]
+    },
+    "Agent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "PlayerStats": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "integer"
+        },
+        "kills": {
+          "type": "integer"
+        },
+        "deaths": {
+          "type": "integer"
+        },
+        "assists": {
+          "type": "integer"
+        },
+        "headshots": {
+          "type": "integer"
+        },
+        "legshots": {
+          "type": "integer"
+        },
+        "bodyshots": {
+          "type": "integer"
+        },
+        "damage": {
+          "$ref": "#/definitions/Damage"
+        }
+      },
+      "required": [
+        "score",
+        "kills",
+        "deaths",
+        "assists",
+        "headshots",
+        "legshots",
+        "bodyshots",
+        "damage"
+      ]
+    },
+    "Damage": {
+      "type": "object",
+      "properties": {
+        "dealt": {
+          "type": "integer"
+        },
+        "received": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dealt",
+        "received"
+      ]
+    },
+    "AbilityCasts": {
+      "type": "object",
+      "properties": {
+        "grenade": {
+          "type": "integer"
+        },
+        "ability_1": {
+          "type": "integer"
+        },
+        "ability_2": {
+          "type": "integer"
+        },
+        "ultimate": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "grenade",
+        "ability_1",
+        "ability_2",
+        "ultimate"
+      ]
+    },
+    "Tier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Behavior": {
+      "type": "object",
+      "properties": {
+        "afk_rounds": {
+          "type": "integer"
+        },
+        "friendly_fire": {
+          "$ref": "#/definitions/FriendlyFire"
+        },
+        "rounds_in_spawn": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "afk_rounds",
+        "friendly_fire",
+        "rounds_in_spawn"
+      ]
+    },
+    "FriendlyFire": {
+      "type": "object",
+      "properties": {
+        "incoming": {
+          "type": "integer"
+        },
+        "outgoing": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "incoming",
+        "outgoing"
+      ]
+    },
+    "Economy": {
+      "type": "object",
+      "properties": {
+        "spent": {
+          "$ref": "#/definitions/EconomyValue"
+        },
+        "loadout_value": {
+          "$ref": "#/definitions/EconomyValue"
+        }
+      },
+      "required": [
+        "spent",
+        "loadout_value"
+      ]
+    },
+    "EconomyValue": {
+      "type": "object",
+      "properties": {
+        "overall": {
+          "type": "integer"
+        },
+        "average": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "overall",
+        "average"
+      ]
+    },
+    "Observer": {
+      "type": "object",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "account_level": {
+          "type": "integer"
+        },
+        "session_playtime_in_ms": {
+          "type": "integer"
+        },
+        "card_id": {
+          "type": "string"
+        },
+        "title_id": {
+          "type": "string"
+        },
+        "party_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "puuid",
+        "name",
+        "tag",
+        "account_level",
+        "session_playtime_in_ms",
+        "card_id",
+        "title_id",
+        "party_id"
+      ]
+    },
+    "Coach": {
+      "type": "object",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "puuid",
+        "team_id"
+      ]
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "team_id": {
+          "type": "string"
+        },
+        "rounds": {
+          "$ref": "#/definitions/Rounds"
+        },
+        "won": {
+          "type": "boolean"
+        },
+        "premier_roster": {
+          "$ref": "#/definitions/PremierRoster"
+        }
+      },
+      "required": [
+        "team_id",
+        "rounds",
+        "won",
+        "premier_roster"
+      ]
+    },
+    "Rounds": {
+      "type": "object",
+      "properties": {
+        "won": {
+          "type": "integer"
+        },
+        "lost": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "won",
+        "lost"
+      ]
+    },
+    "PremierRoster": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "customization": {
+          "$ref": "#/definitions/Customization"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "tag",
+        "members",
+        "customization"
+      ]
+    },
+    "Customization": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "primary_color": {
+          "type": "string"
+        },
+        "secondary_color": {
+          "type": "string"
+        },
+        "tertiary_color": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "icon",
+        "image",
+        "primary_color",
+        "secondary_color",
+        "tertiary_color"
+      ]
+    },
+    "Round": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "result": {
+          "type": "string"
+        },
+        "ceremony": {
+          "type": "string"
+        },
+        "winning_team": {
+          "type": "string"
+        },
+        "plant": {
+          "$ref": "#/definitions/Plant"
+        },
+        "defuse": {
+          "$ref": "#/definitions/Defuse"
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoundStats"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "result",
+        "ceremony",
+        "winning_team",
+        "plant",
+        "defuse",
+        "stats"
+      ]
+    },
+    "Plant": {
+      "type": "object",
+      "properties": {
+        "round_time_in_ms": {
+          "type": "integer"
+        },
+        "site": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "player": {
+          "$ref": "#/definitions/PlayerInfo"
+        },
+        "player_locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerLocation"
+          }
+        }
+      },
+      "required": [
+        "round_time_in_ms",
+        "site",
+        "location",
+        "player",
+        "player_locations"
+      ]
+    },
+    "Defuse": {
+      "type": "object",
+      "properties": {
+        "round_time_in_ms": {
+          "type": "integer"
+        },
+        "location": {
+          "type": "string"
+        },
+        "player": {
+          "$ref": "#/definitions/PlayerInfo"
+        },
+        "player_locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerLocation"
+          }
+        }
+      },
+      "required": [
+        "round_time_in_ms",
+        "location",
+        "player",
+        "player_locations"
+      ]
+    },
+    "RoundStats": {
+      "type": "object",
+      "properties": {
+        "ability_casts": {
+          "$ref": "#/definitions/AbilityCasts"
+        },
+        "player": {
+          "$ref": "#/definitions/PlayerInfo"
+        },
+        "damage_events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DamageEvent"
+          }
+        },
+        "stats": {
+          "$ref": "#/definitions/PlayerStats"
+        },
+        "economy": {
+          "$ref": "#/definitions/RoundEconomy"
+        },
+        "was_afk": {
+          "type": "boolean"
+        },
+        "received_penalty": {
+          "type": "boolean"
+        },
+        "stayed_in_spawn": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "ability_casts",
+        "player",
+        "damage_events",
+        "stats",
+        "economy",
+        "was_afk",
+        "received_penalty",
+        "stayed_in_spawn"
+      ]
+    },
+    "DamageEvent": {
+      "type": "object",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "bodyshots": {
+          "type": "integer"
+        },
+        "headshots": {
+          "type": "integer"
+        },
+        "legshots": {
+          "type": "integer"
+        },
+        "damage": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "puuid",
+        "name",
+        "tag",
+        "team",
+        "bodyshots",
+        "headshots",
+        "legshots",
+        "damage"
+      ]
+    },
+    "RoundEconomy": {
+      "type": "object",
+      "properties": {
+        "loadout_value": {
+          "type": "integer"
+        },
+        "remaining": {
+          "type": "integer"
+        },
+        "weapon": {
+          "$ref": "#/definitions/Weapon"
+        },
+        "armor": {
+          "$ref": "#/definitions/Armor"
+        }
+      },
+      "required": [
+        "loadout_value",
+        "remaining",
+        "weapon",
+        "armor"
+      ]
+    },
+    "Weapon": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ]
+    },
+    "Armor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Kill": {
+      "type": "object",
+      "properties": {
+        "round": {
+          "type": "integer"
+        },
+        "time_in_round_in_ms": {
+          "type": "integer"
+        },
+        "time_in_match_in_ms": {
+          "type": "integer"
+        },
+        "killer": {
+          "$ref": "#/definitions/PlayerInfo"
+        },
+        "victim": {
+          "$ref": "#/definitions/PlayerInfo"
+        },
+        "assistants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerInfo"
+          }
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "weapon": {
+          "$ref": "#/definitions/Weapon"
+        },
+        "secondary_fire_mode": {
+          "type": "boolean"
+        },
+        "player_locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerLocation"
+          }
+        }
+      },
+      "required": [
+        "round",
+        "time_in_round_in_ms",
+        "time_in_match_in_ms",
+        "killer",
+        "victim",
+        "assistants",
+        "location",
+        "weapon",
+        "secondary_fire_mode",
+        "player_locations"
+      ]
+    }
+  }
+}

@@ -6,50 +6,36 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>kz.lab</groupId>
     <artifactId>Valorant-stats-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Valorant-stats-backend</name>
-    <description>Valorant-stats-backend</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <description>Backend for Valorant statistics</description>
     <properties>
         <java.version>21</java.version>
+        <jsonschema2pojo.version>1.2.2</jsonschema2pojo.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -61,13 +47,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -88,7 +76,59 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>clean-generated-sources</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${basedir}/src/main/java/kz/lab/valorant_stats_backend/model/generated
+                                    </directory>
+                                    <includes>
+                                        <include>*.java</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.jsonschema2pojo</groupId>-->
+<!--                <artifactId>jsonschema2pojo-maven-plugin</artifactId>-->
+<!--                <version>${jsonschema2pojo.version}</version>-->
+<!--                <configuration>-->
+<!--                    <sourceDirectory>${basedir}/src/main/resources/json</sourceDirectory>-->
+<!--                    <outputDirectory>${basedir}/src/main/java</outputDirectory>-->
+<!--                    <targetPackage>kz.lab.valorant_stats_backend.model.generated</targetPackage>-->
+<!--                    <sourceType>jsonschema</sourceType>-->
+<!--                    <annotationStyle>jackson2</annotationStyle>-->
+<!--                    <useLongIntegers>true</useLongIntegers>-->
+<!--                    <includeAdditionalProperties>false</includeAdditionalProperties>-->
+<!--                    <generateBuilders>false</generateBuilders>-->
+<!--                    <includeToString>true</includeToString>-->
+<!--                    <includeHashcodeAndEquals>true</includeHashcodeAndEquals>-->
+<!--                    <useInnerClassBuilders>false</useInnerClassBuilders>-->
+<!--                    <propertyWordDelimiters></propertyWordDelimiters>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>generate-json-schema</id>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
-
 </project>
