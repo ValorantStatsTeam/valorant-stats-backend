@@ -1,7 +1,10 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -13,7 +16,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "rounds_in_spawn"
 })
 @Generated("jsonschema2pojo")
-public class Behavior {
+public class Behavior implements Serializable
+{
 
     /**
      * 
@@ -21,6 +25,7 @@ public class Behavior {
      * 
      */
     @JsonProperty("afk_rounds")
+    @NotNull
     private Long afkRounds;
     /**
      * 
@@ -28,6 +33,8 @@ public class Behavior {
      * 
      */
     @JsonProperty("friendly_fire")
+    @Valid
+    @NotNull
     private FriendlyFire friendlyFire;
     /**
      * 
@@ -35,7 +42,23 @@ public class Behavior {
      * 
      */
     @JsonProperty("rounds_in_spawn")
+    @NotNull
     private Long roundsInSpawn;
+    private final static long serialVersionUID = 9148074060708921076L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Behavior() {
+    }
+
+    public Behavior(Long afkRounds, FriendlyFire friendlyFire, Long roundsInSpawn) {
+        super();
+        this.afkRounds = afkRounds;
+        this.friendlyFire = friendlyFire;
+        this.roundsInSpawn = roundsInSpawn;
+    }
 
     /**
      * 
@@ -55,6 +78,11 @@ public class Behavior {
     @JsonProperty("afk_rounds")
     public void setAfkRounds(Long afkRounds) {
         this.afkRounds = afkRounds;
+    }
+
+    public Behavior withAfkRounds(Long afkRounds) {
+        this.afkRounds = afkRounds;
+        return this;
     }
 
     /**
@@ -77,6 +105,11 @@ public class Behavior {
         this.friendlyFire = friendlyFire;
     }
 
+    public Behavior withFriendlyFire(FriendlyFire friendlyFire) {
+        this.friendlyFire = friendlyFire;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -95,6 +128,11 @@ public class Behavior {
     @JsonProperty("rounds_in_spawn")
     public void setRoundsInSpawn(Long roundsInSpawn) {
         this.roundsInSpawn = roundsInSpawn;
+    }
+
+    public Behavior withRoundsInSpawn(Long roundsInSpawn) {
+        this.roundsInSpawn = roundsInSpawn;
+        return this;
     }
 
     @Override

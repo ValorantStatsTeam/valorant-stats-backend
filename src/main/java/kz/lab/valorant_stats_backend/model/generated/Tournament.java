@@ -10,21 +10,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "name"
+    "name",
+    "season"
 })
 @Generated("jsonschema2pojo")
-public class Tier implements Serializable
+public class Tournament implements Serializable
 {
 
-    /**
-     * 
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    @NotNull
-    private Long id;
     /**
      * 
      * (Required)
@@ -33,44 +25,27 @@ public class Tier implements Serializable
     @JsonProperty("name")
     @NotNull
     private String name;
-    private final static long serialVersionUID = 1295163678480146061L;
+    /**
+     * 
+     * (Required)
+     * 
+     */
+    @JsonProperty("season")
+    @NotNull
+    private String season;
+    private final static long serialVersionUID = 2666278635645493485L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Tier() {
+    public Tournament() {
     }
 
-    public Tier(Long id, String name) {
+    public Tournament(String name, String season) {
         super();
-        this.id = id;
         this.name = name;
-    }
-
-    /**
-     * 
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * 
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Tier withId(Long id) {
-        this.id = id;
-        return this;
+        this.season = season;
     }
 
     /**
@@ -93,22 +68,47 @@ public class Tier implements Serializable
         this.name = name;
     }
 
-    public Tier withName(String name) {
+    public Tournament withName(String name) {
         this.name = name;
+        return this;
+    }
+
+    /**
+     * 
+     * (Required)
+     * 
+     */
+    @JsonProperty("season")
+    public String getSeason() {
+        return season;
+    }
+
+    /**
+     * 
+     * (Required)
+     * 
+     */
+    @JsonProperty("season")
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public Tournament withSeason(String season) {
+        this.season = season;
         return this;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Tier.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
-        sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
-        sb.append(',');
+        sb.append(Tournament.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("name");
         sb.append('=');
         sb.append(((this.name == null)?"<null>":this.name));
+        sb.append(',');
+        sb.append("season");
+        sb.append('=');
+        sb.append(((this.season == null)?"<null>":this.season));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -122,7 +122,7 @@ public class Tier implements Serializable
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
-        result = ((result* 31)+((this.id == null)? 0 :this.id.hashCode()));
+        result = ((result* 31)+((this.season == null)? 0 :this.season.hashCode()));
         return result;
     }
 
@@ -131,11 +131,11 @@ public class Tier implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Tier) == false) {
+        if ((other instanceof Tournament) == false) {
             return false;
         }
-        Tier rhs = ((Tier) other);
-        return (((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))));
+        Tournament rhs = ((Tournament) other);
+        return (((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.season == rhs.season)||((this.season!= null)&&this.season.equals(rhs.season))));
     }
 
 }

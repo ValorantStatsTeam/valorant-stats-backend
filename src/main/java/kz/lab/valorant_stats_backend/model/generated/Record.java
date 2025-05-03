@@ -10,11 +10,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "short"
+    "wins",
+    "losses"
 })
 @Generated("jsonschema2pojo")
-public class Season implements Serializable
+public class Record implements Serializable
 {
 
     /**
@@ -22,30 +22,30 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("id")
+    @JsonProperty("wins")
     @NotNull
-    private String id;
+    private Long wins;
     /**
      * 
      * (Required)
      * 
      */
-    @JsonProperty("short")
+    @JsonProperty("losses")
     @NotNull
-    private String _short;
-    private final static long serialVersionUID = 8887664015089275013L;
+    private Long losses;
+    private final static long serialVersionUID = 4689802893516236285L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Season() {
+    public Record() {
     }
 
-    public Season(String id, String _short) {
+    public Record(Long wins, Long losses) {
         super();
-        this.id = id;
-        this._short = _short;
+        this.wins = wins;
+        this.losses = losses;
     }
 
     /**
@@ -53,9 +53,9 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("id")
-    public String getId() {
-        return id;
+    @JsonProperty("wins")
+    public Long getWins() {
+        return wins;
     }
 
     /**
@@ -63,13 +63,13 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("id")
-    public void setId(String id) {
-        this.id = id;
+    @JsonProperty("wins")
+    public void setWins(Long wins) {
+        this.wins = wins;
     }
 
-    public Season withId(String id) {
-        this.id = id;
+    public Record withWins(Long wins) {
+        this.wins = wins;
         return this;
     }
 
@@ -78,9 +78,9 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("short")
-    public String getShort() {
-        return _short;
+    @JsonProperty("losses")
+    public Long getLosses() {
+        return losses;
     }
 
     /**
@@ -88,27 +88,27 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("short")
-    public void setShort(String _short) {
-        this._short = _short;
+    @JsonProperty("losses")
+    public void setLosses(Long losses) {
+        this.losses = losses;
     }
 
-    public Season withShort(String _short) {
-        this._short = _short;
+    public Record withLosses(Long losses) {
+        this.losses = losses;
         return this;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Season.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
+        sb.append(Record.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("wins");
         sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
+        sb.append(((this.wins == null)?"<null>":this.wins));
         sb.append(',');
-        sb.append("_short");
+        sb.append("losses");
         sb.append('=');
-        sb.append(((this._short == null)?"<null>":this._short));
+        sb.append(((this.losses == null)?"<null>":this.losses));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -121,8 +121,8 @@ public class Season implements Serializable
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this._short == null)? 0 :this._short.hashCode()));
-        result = ((result* 31)+((this.id == null)? 0 :this.id.hashCode()));
+        result = ((result* 31)+((this.wins == null)? 0 :this.wins.hashCode()));
+        result = ((result* 31)+((this.losses == null)? 0 :this.losses.hashCode()));
         return result;
     }
 
@@ -131,11 +131,11 @@ public class Season implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Season) == false) {
+        if ((other instanceof Record) == false) {
             return false;
         }
-        Season rhs = ((Season) other);
-        return (((this._short == rhs._short)||((this._short!= null)&&this._short.equals(rhs._short)))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))));
+        Record rhs = ((Record) other);
+        return (((this.wins == rhs.wins)||((this.wins!= null)&&this.wins.equals(rhs.wins)))&&((this.losses == rhs.losses)||((this.losses!= null)&&this.losses.equals(rhs.losses))));
     }
 
 }

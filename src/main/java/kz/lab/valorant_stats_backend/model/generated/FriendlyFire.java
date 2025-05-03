@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "outgoing"
 })
 @Generated("jsonschema2pojo")
-public class FriendlyFire {
+public class FriendlyFire implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class FriendlyFire {
      * 
      */
     @JsonProperty("incoming")
+    @NotNull
     private Long incoming;
     /**
      * 
@@ -27,7 +31,22 @@ public class FriendlyFire {
      * 
      */
     @JsonProperty("outgoing")
+    @NotNull
     private Long outgoing;
+    private final static long serialVersionUID = 3761949734814464782L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public FriendlyFire() {
+    }
+
+    public FriendlyFire(Long incoming, Long outgoing) {
+        super();
+        this.incoming = incoming;
+        this.outgoing = outgoing;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class FriendlyFire {
         this.incoming = incoming;
     }
 
+    public FriendlyFire withIncoming(Long incoming) {
+        this.incoming = incoming;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class FriendlyFire {
     @JsonProperty("outgoing")
     public void setOutgoing(Long outgoing) {
         this.outgoing = outgoing;
+    }
+
+    public FriendlyFire withOutgoing(Long outgoing) {
+        this.outgoing = outgoing;
+        return this;
     }
 
     @Override

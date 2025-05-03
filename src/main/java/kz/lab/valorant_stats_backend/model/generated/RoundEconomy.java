@@ -1,7 +1,10 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -14,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "armor"
 })
 @Generated("jsonschema2pojo")
-public class RoundEconomy {
+public class RoundEconomy implements Serializable
+{
 
     /**
      * 
@@ -22,6 +26,7 @@ public class RoundEconomy {
      * 
      */
     @JsonProperty("loadout_value")
+    @NotNull
     private Long loadoutValue;
     /**
      * 
@@ -29,6 +34,7 @@ public class RoundEconomy {
      * 
      */
     @JsonProperty("remaining")
+    @NotNull
     private Long remaining;
     /**
      * 
@@ -36,6 +42,8 @@ public class RoundEconomy {
      * 
      */
     @JsonProperty("weapon")
+    @Valid
+    @NotNull
     private Weapon weapon;
     /**
      * 
@@ -43,7 +51,25 @@ public class RoundEconomy {
      * 
      */
     @JsonProperty("armor")
+    @Valid
+    @NotNull
     private Armor armor;
+    private final static long serialVersionUID = -6360805731282275500L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public RoundEconomy() {
+    }
+
+    public RoundEconomy(Long loadoutValue, Long remaining, Weapon weapon, Armor armor) {
+        super();
+        this.loadoutValue = loadoutValue;
+        this.remaining = remaining;
+        this.weapon = weapon;
+        this.armor = armor;
+    }
 
     /**
      * 
@@ -63,6 +89,11 @@ public class RoundEconomy {
     @JsonProperty("loadout_value")
     public void setLoadoutValue(Long loadoutValue) {
         this.loadoutValue = loadoutValue;
+    }
+
+    public RoundEconomy withLoadoutValue(Long loadoutValue) {
+        this.loadoutValue = loadoutValue;
+        return this;
     }
 
     /**
@@ -85,6 +116,11 @@ public class RoundEconomy {
         this.remaining = remaining;
     }
 
+    public RoundEconomy withRemaining(Long remaining) {
+        this.remaining = remaining;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -105,6 +141,11 @@ public class RoundEconomy {
         this.weapon = weapon;
     }
 
+    public RoundEconomy withWeapon(Weapon weapon) {
+        this.weapon = weapon;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -123,6 +164,11 @@ public class RoundEconomy {
     @JsonProperty("armor")
     public void setArmor(Armor armor) {
         this.armor = armor;
+    }
+
+    public RoundEconomy withArmor(Armor armor) {
+        this.armor = armor;
+        return this;
     }
 
     @Override

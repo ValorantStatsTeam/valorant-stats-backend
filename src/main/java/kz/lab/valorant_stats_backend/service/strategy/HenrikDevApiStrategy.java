@@ -1,5 +1,6 @@
 package kz.lab.valorant_stats_backend.service.strategy;
 
+import kz.lab.valorant_stats_backend.model.generated.EsportsSchedule;
 import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -22,8 +23,6 @@ public class HenrikDevApiStrategy implements ValorantApiStrategy {
     WebClient webClient;
     String apiUrl;
     String apiKey;
-    // Добавлено: константа для ограничения количества пользователей
-    private static final int MAX_PLAYERS_LIMIT = 500;
 
     /**
      * Конструктор для инициализации стратегии.
@@ -33,25 +32,28 @@ public class HenrikDevApiStrategy implements ValorantApiStrategy {
      * @param apiKey    ключ авторизации API (из конфигурации)
      */
     public HenrikDevApiStrategy(WebClient webClient,
-                                @Value("${valorant.api.url}") String apiUrl,
-                                @Value("${valorant.api.key}") String apiKey) {
+                                @Value("${henrikdev.api.url}") String apiUrl, // *** Изменено ***
+                                @Value("${henrikdev.api.key}") String apiKey) { // *** Изменено ***
         this.webClient = webClient;
         this.apiUrl = apiUrl;
         this.apiKey = apiKey;
     }
 
-    /**
-     * Асинхронно извлекает историю матчей игрока по имени и тегу.
-     * <p>
-     * Выполняет GET-запрос к endpoint'у `/valorant/v4/matches/{region}/{platform}/{name}/{tag}`.
-     * В случае ошибки логирует сообщение и возвращает пустой Mono.
-     *
-     * @param region   регион игрока (например, "eu")
-     * @param platform платформа игрока (например, "pc")
-     * @param name     имя игрока
-     * @param tag      тег игрока
-     * @return {@link Mono} с историей матчей
-     */
+    @Override
+    public Mono<MatchHistory> fetchMatchHistory(String region, String puuid) {
+        String url = String.format("%s/v3/by-puuid/matches/%s/%s", apiUrl, region, puuid);
+        log.info("Fetching match history from URL: {}", url);
+        return webClient.get()
+                .uri(url)
+                .header("Authorization", apiKey)
+                .retrieve()
+                .bodyToMono(MatchHistory.class)
+                .onErrorResume(e -> {
+                    log.error("Failed to fetch match history: {}", e.getMessage());
+                    return Mono.empty();
+                });
+    }
+
     @Override
     public Mono<MatchHistory> fetchMatchHistoryByNameTag(String region, String platform, String name, String tag) {
         String url = String.format("%s/v4/matches/%s/%s/%s/%s", apiUrl, region, platform, name, tag);
@@ -69,132 +71,29 @@ public class HenrikDevApiStrategy implements ValorantApiStrategy {
                 });
     }
 
-//    @Override
-//    public Mono<List<Player>> fetchPlayerStats(String region, String puuid) {
-//        String url = String.format("%s/v3/by-puuid/matches/%s/%s", apiUrl, region, puuid);
-//        log.info("Fetching player stats from URL: {}", url);
-//        return webClient.get()
-//                .uri(url)
-//                .header("Authorization", apiKey)
-//                .retrieve()
-//                .bodyToMono(MatchHistory.class)
-//                .map(response -> response.getData().stream()
-//                        .flatMap(match -> match.getPlayers().getAllPlayers().stream())
-//                        .collect(Collectors.toList()))
-//                .onErrorResume(e -> {
-//                    log.error("Failed to fetch player stats: {}", e.getMessage());
-//                    return Mono.just(List.of());
-//                });
-//    }
+    // *** Добавлено: метод для получения расписания киберспортивных событий ***
 
-//    @Override
-//    public Mono<AccountDetails> fetchAccountDetails(String puuid) {
-//        String url = String.format("%s/v1/by-puuid/account/%s", apiUrl, puuid);
-//        log.info("Fetching account details from URL: {}", url);
-//        return webClient.get()
-//                .uri(url)
-//                .header("Authorization", apiKey)
-//                .retrieve()
-//                .bodyToMono(AccountDetails.class)
-//                .onErrorResume(e -> {
-//                    log.error("Failed to fetch account details: {}", e.getMessage());
-//                    return Mono.empty();
-//                });
-//    }
-//
-//    @Override
-//    public Mono<AccountDetails> fetchAccountDetailsByNameTag(String name, String tag) {
-//        String url = String.format("%s/v1/account/%s/%s", apiUrl, name, tag);
-//        log.info("Fetching account details by name and tag from URL: {}", url);
-//        return webClient.get()
-//                .uri(url)
-//                .header("Authorization", apiKey)
-//                .retrieve()
-//                .bodyToMono(AccountDetails.class)
-//                .onErrorResume(e -> {
-//                    log.error("Failed to fetch account details by name and tag: {}", e.getMessage());
-//                    return Mono.empty();
-//                });
-//    }
-
+    /**
+     * Асинхронно извлекает расписание киберспортивных событий.
+     * <p>
+     * Выполняет GET-запрос к endpoint'у `/valorant/v1/esports/schedule`.
+     * В случае ошибки логирует сообщение и возвращает пустой Mono.
+     *
+     * @return {@link Mono} с расписанием событий
+     */
     @Override
-    public Mono<MatchHistory> fetchMatchHistory(String region, String puuid) {
-        String url = String.format("%s/v3/by-puuid/matches/%s/%s", apiUrl, region, puuid);
-        log.info("Fetching match history from URL: {}", url);
+    public Mono<EsportsSchedule> fetchEsportsSchedule() {
+        String url = String.format("%s/v1/esports/schedule", apiUrl);
+        log.info("Fetching esports schedule from URL: {}", url);
         return webClient.get()
                 .uri(url)
                 .header("Authorization", apiKey)
+                .accept(org.springframework.http.MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(MatchHistory.class)
+                .bodyToMono(EsportsSchedule.class)
                 .onErrorResume(e -> {
-                    log.error("Failed to fetch match history: {}", e.getMessage());
+                    log.error("Failed to fetch esports schedule: {}", e.getMessage());
                     return Mono.empty();
                 });
     }
-
-//    @Override
-//    public Mono<MMRDetails> fetchMMRDetails(String region, String puuid) {
-//        String url = String.format("%s/v1/by-puuid/mmr/%s/%s", apiUrl, region, puuid);
-//        log.info("Fetching MMR details from URL: {}", url);
-//        return webClient.get()
-//                .uri(url)
-//                .header("Authorization", apiKey)
-//                .retrieve()
-//                .bodyToMono(MMRDetails.class)
-//                .onErrorResume(e -> {
-//                    log.error("Failed to fetch MMR details: {}", e.getMessage());
-//                    return Mono.empty();
-//                });
-//    }
-//
-//    /**
-//     * Асинхронно извлекает данные лидерборда для указанного региона и платформы.
-//     * <p>
-//     * Использует WebClient для выполнения GET-запроса к endpoint'у `/v3/leaderboard/{region}/{platform}`.
-//     * Ограничивает количество возвращаемых игроков до 500.
-//     * В случае ошибки логирует полный ответ API для отладки.
-//     *
-//     * @param region   регион лидерборда (например, "eu")
-//     * @param platform платформа (например, "pc")
-//     * @return {@link Mono} с данными лидерборда или ошибкой
-//     */
-//    @Override
-//    public Mono<LeaderboardResponse> fetchLeaderboard(String region, String platform) {
-//        log.info("Fetching leaderboard for region: {}, platform: {}", region, platform);
-//        return webClient.get()
-//                .uri(uriBuilder -> uriBuilder
-//                        .path("/v3/leaderboard/{region}/{platform}")
-//                        // Добавлено: параметр size для ограничения количества записей
-//                        .queryParam("size", MAX_PLAYERS_LIMIT)
-//                        .build(region, platform))
-//                .header("Authorization", apiKey)
-//                .accept(MediaType.APPLICATION_JSON)
-//                .retrieve()
-//                .bodyToMono(LeaderboardResponse.class)
-//                .map(response -> {
-//                    // Добавлено: ограничение списка игроков до 500
-//                    List<LeaderboardPlayerDetailed> limitedPlayers = response.getData().getPlayers().stream()
-//                            .limit(MAX_PLAYERS_LIMIT)
-//                            .collect(Collectors.toList());
-//                    response.getData().setPlayers(limitedPlayers);
-//                    return response;
-//                })
-//                .doOnNext(resp -> log.debug("Successfully fetched leaderboard: {}", resp))
-//                .onErrorResume(e -> {
-//                    log.error("Failed to fetch leaderboard for region: {}, platform: {}. Error: {}",
-//                            region, platform, e.getMessage());
-//                    return webClient.get()
-//                            .uri(uriBuilder -> uriBuilder
-//                                    .path("/v3/leaderboard/{region}/{platform}")
-//                                    .queryParam("size", MAX_PLAYERS_LIMIT)
-//                                    .build(region, platform))
-//                            .header("Authorization", apiKey)
-//                            .accept(MediaType.APPLICATION_JSON)
-//                            .retrieve()
-//                            .bodyToMono(String.class)
-//                            .doOnNext(response -> log.error("Raw API response: {}", response))
-//                            .flatMap(response -> Mono.error(new RuntimeException(
-//                                    "Failed to deserialize leaderboard: " + e.getMessage())));
-//                });
-//    }
 }

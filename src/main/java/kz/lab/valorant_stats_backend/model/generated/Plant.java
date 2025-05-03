@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "player_locations"
 })
 @Generated("jsonschema2pojo")
-public class Plant {
+public class Plant implements Serializable
+{
 
     /**
      * 
@@ -25,6 +29,7 @@ public class Plant {
      * 
      */
     @JsonProperty("round_time_in_ms")
+    @NotNull
     private Long roundTimeInMs;
     /**
      * 
@@ -32,6 +37,7 @@ public class Plant {
      * 
      */
     @JsonProperty("site")
+    @NotNull
     private String site;
     /**
      * 
@@ -39,6 +45,8 @@ public class Plant {
      * 
      */
     @JsonProperty("location")
+    @Valid
+    @NotNull
     private Location location;
     /**
      * 
@@ -46,6 +54,8 @@ public class Plant {
      * 
      */
     @JsonProperty("player")
+    @Valid
+    @NotNull
     private PlayerInfo player;
     /**
      * 
@@ -53,7 +63,26 @@ public class Plant {
      * 
      */
     @JsonProperty("player_locations")
+    @Valid
+    @NotNull
     private List<PlayerLocation> playerLocations = new ArrayList<PlayerLocation>();
+    private final static long serialVersionUID = 4790548170174448097L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Plant() {
+    }
+
+    public Plant(Long roundTimeInMs, String site, Location location, PlayerInfo player, List<PlayerLocation> playerLocations) {
+        super();
+        this.roundTimeInMs = roundTimeInMs;
+        this.site = site;
+        this.location = location;
+        this.player = player;
+        this.playerLocations = playerLocations;
+    }
 
     /**
      * 
@@ -73,6 +102,11 @@ public class Plant {
     @JsonProperty("round_time_in_ms")
     public void setRoundTimeInMs(Long roundTimeInMs) {
         this.roundTimeInMs = roundTimeInMs;
+    }
+
+    public Plant withRoundTimeInMs(Long roundTimeInMs) {
+        this.roundTimeInMs = roundTimeInMs;
+        return this;
     }
 
     /**
@@ -95,6 +129,11 @@ public class Plant {
         this.site = site;
     }
 
+    public Plant withSite(String site) {
+        this.site = site;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -113,6 +152,11 @@ public class Plant {
     @JsonProperty("location")
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Plant withLocation(Location location) {
+        this.location = location;
+        return this;
     }
 
     /**
@@ -135,6 +179,11 @@ public class Plant {
         this.player = player;
     }
 
+    public Plant withPlayer(PlayerInfo player) {
+        this.player = player;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -153,6 +202,11 @@ public class Plant {
     @JsonProperty("player_locations")
     public void setPlayerLocations(List<PlayerLocation> playerLocations) {
         this.playerLocations = playerLocations;
+    }
+
+    public Plant withPlayerLocations(List<PlayerLocation> playerLocations) {
+        this.playerLocations = playerLocations;
+        return this;
     }
 
     @Override

@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -13,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "mode_type"
 })
 @Generated("jsonschema2pojo")
-public class Queue {
+public class Queue implements Serializable
+{
 
     /**
      * 
@@ -21,6 +24,7 @@ public class Queue {
      * 
      */
     @JsonProperty("id")
+    @NotNull
     private String id;
     /**
      * 
@@ -28,6 +32,7 @@ public class Queue {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -35,7 +40,23 @@ public class Queue {
      * 
      */
     @JsonProperty("mode_type")
+    @NotNull
     private String modeType;
+    private final static long serialVersionUID = -896755894224005268L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Queue() {
+    }
+
+    public Queue(String id, String name, String modeType) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.modeType = modeType;
+    }
 
     /**
      * 
@@ -55,6 +76,11 @@ public class Queue {
     @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Queue withId(String id) {
+        this.id = id;
+        return this;
     }
 
     /**
@@ -77,6 +103,11 @@ public class Queue {
         this.name = name;
     }
 
+    public Queue withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -95,6 +126,11 @@ public class Queue {
     @JsonProperty("mode_type")
     public void setModeType(String modeType) {
         this.modeType = modeType;
+    }
+
+    public Queue withModeType(String modeType) {
+        this.modeType = modeType;
+        return this;
     }
 
     @Override

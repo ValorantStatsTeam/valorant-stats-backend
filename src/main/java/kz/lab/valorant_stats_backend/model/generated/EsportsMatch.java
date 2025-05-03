@@ -2,7 +2,10 @@
 package kz.lab.valorant_stats_backend.model.generated;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,11 +14,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "name",
-    "type"
+    "game_type",
+    "teams"
 })
 @Generated("jsonschema2pojo")
-public class Weapon implements Serializable
+public class EsportsMatch implements Serializable
 {
 
     /**
@@ -31,31 +34,33 @@ public class Weapon implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("name")
+    @JsonProperty("game_type")
+    @Valid
     @NotNull
-    private String name;
+    private GameType gameType;
     /**
      * 
      * (Required)
      * 
      */
-    @JsonProperty("type")
+    @JsonProperty("teams")
+    @Valid
     @NotNull
-    private String type;
-    private final static long serialVersionUID = 1429278183811247593L;
+    private List<Team> teams = new ArrayList<Team>();
+    private final static long serialVersionUID = 457942095550179743L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Weapon() {
+    public EsportsMatch() {
     }
 
-    public Weapon(String id, String name, String type) {
+    public EsportsMatch(String id, GameType gameType, List<Team> teams) {
         super();
         this.id = id;
-        this.name = name;
-        this.type = type;
+        this.gameType = gameType;
+        this.teams = teams;
     }
 
     /**
@@ -78,7 +83,7 @@ public class Weapon implements Serializable
         this.id = id;
     }
 
-    public Weapon withId(String id) {
+    public EsportsMatch withId(String id) {
         this.id = id;
         return this;
     }
@@ -88,9 +93,9 @@ public class Weapon implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("name")
-    public String getName() {
-        return name;
+    @JsonProperty("game_type")
+    public GameType getGameType() {
+        return gameType;
     }
 
     /**
@@ -98,13 +103,13 @@ public class Weapon implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
+    @JsonProperty("game_type")
+    public void setGameType(GameType gameType) {
+        this.gameType = gameType;
     }
 
-    public Weapon withName(String name) {
-        this.name = name;
+    public EsportsMatch withGameType(GameType gameType) {
+        this.gameType = gameType;
         return this;
     }
 
@@ -113,9 +118,9 @@ public class Weapon implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    @JsonProperty("teams")
+    public List<Team> getTeams() {
+        return teams;
     }
 
     /**
@@ -123,31 +128,31 @@ public class Weapon implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
+    @JsonProperty("teams")
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
     }
 
-    public Weapon withType(String type) {
-        this.type = type;
+    public EsportsMatch withTeams(List<Team> teams) {
+        this.teams = teams;
         return this;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Weapon.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(EsportsMatch.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("id");
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
-        sb.append("name");
+        sb.append("gameType");
         sb.append('=');
-        sb.append(((this.name == null)?"<null>":this.name));
+        sb.append(((this.gameType == null)?"<null>":this.gameType));
         sb.append(',');
-        sb.append("type");
+        sb.append("teams");
         sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
+        sb.append(((this.teams == null)?"<null>":this.teams));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -160,8 +165,8 @@ public class Weapon implements Serializable
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
-        result = ((result* 31)+((this.type == null)? 0 :this.type.hashCode()));
+        result = ((result* 31)+((this.teams == null)? 0 :this.teams.hashCode()));
+        result = ((result* 31)+((this.gameType == null)? 0 :this.gameType.hashCode()));
         result = ((result* 31)+((this.id == null)? 0 :this.id.hashCode()));
         return result;
     }
@@ -171,11 +176,11 @@ public class Weapon implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Weapon) == false) {
+        if ((other instanceof EsportsMatch) == false) {
             return false;
         }
-        Weapon rhs = ((Weapon) other);
-        return ((((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name)))&&((this.type == rhs.type)||((this.type!= null)&&this.type.equals(rhs.type))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))));
+        EsportsMatch rhs = ((EsportsMatch) other);
+        return ((((this.teams == rhs.teams)||((this.teams!= null)&&this.teams.equals(rhs.teams)))&&((this.gameType == rhs.gameType)||((this.gameType!= null)&&this.gameType.equals(rhs.gameType))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))));
     }
 
 }

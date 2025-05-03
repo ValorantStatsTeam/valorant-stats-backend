@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "average"
 })
 @Generated("jsonschema2pojo")
-public class EconomyValue {
+public class EconomyValue implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class EconomyValue {
      * 
      */
     @JsonProperty("overall")
+    @NotNull
     private Long overall;
     /**
      * 
@@ -27,7 +31,22 @@ public class EconomyValue {
      * 
      */
     @JsonProperty("average")
+    @NotNull
     private Long average;
+    private final static long serialVersionUID = -1972281006149660435L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public EconomyValue() {
+    }
+
+    public EconomyValue(Long overall, Long average) {
+        super();
+        this.overall = overall;
+        this.average = average;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class EconomyValue {
         this.overall = overall;
     }
 
+    public EconomyValue withOverall(Long overall) {
+        this.overall = overall;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class EconomyValue {
     @JsonProperty("average")
     public void setAverage(Long average) {
         this.average = average;
+    }
+
+    public EconomyValue withAverage(Long average) {
+        this.average = average;
+        return this;
     }
 
     @Override

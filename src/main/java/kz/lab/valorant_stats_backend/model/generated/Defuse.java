@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "player_locations"
 })
 @Generated("jsonschema2pojo")
-public class Defuse {
+public class Defuse implements Serializable
+{
 
     /**
      * 
@@ -24,6 +28,7 @@ public class Defuse {
      * 
      */
     @JsonProperty("round_time_in_ms")
+    @NotNull
     private Long roundTimeInMs;
     /**
      * 
@@ -31,13 +36,16 @@ public class Defuse {
      * 
      */
     @JsonProperty("location")
-    private Location location;
+    @NotNull
+    private String location;
     /**
      * 
      * (Required)
      * 
      */
     @JsonProperty("player")
+    @Valid
+    @NotNull
     private PlayerInfo player;
     /**
      * 
@@ -45,7 +53,25 @@ public class Defuse {
      * 
      */
     @JsonProperty("player_locations")
+    @Valid
+    @NotNull
     private List<PlayerLocation> playerLocations = new ArrayList<PlayerLocation>();
+    private final static long serialVersionUID = -3732355386014914724L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Defuse() {
+    }
+
+    public Defuse(Long roundTimeInMs, String location, PlayerInfo player, List<PlayerLocation> playerLocations) {
+        super();
+        this.roundTimeInMs = roundTimeInMs;
+        this.location = location;
+        this.player = player;
+        this.playerLocations = playerLocations;
+    }
 
     /**
      * 
@@ -67,13 +93,18 @@ public class Defuse {
         this.roundTimeInMs = roundTimeInMs;
     }
 
+    public Defuse withRoundTimeInMs(Long roundTimeInMs) {
+        this.roundTimeInMs = roundTimeInMs;
+        return this;
+    }
+
     /**
      * 
      * (Required)
      * 
      */
     @JsonProperty("location")
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
@@ -83,8 +114,13 @@ public class Defuse {
      * 
      */
     @JsonProperty("location")
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Defuse withLocation(String location) {
+        this.location = location;
+        return this;
     }
 
     /**
@@ -107,6 +143,11 @@ public class Defuse {
         this.player = player;
     }
 
+    public Defuse withPlayer(PlayerInfo player) {
+        this.player = player;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -125,6 +166,11 @@ public class Defuse {
     @JsonProperty("player_locations")
     public void setPlayerLocations(List<PlayerLocation> playerLocations) {
         this.playerLocations = playerLocations;
+    }
+
+    public Defuse withPlayerLocations(List<PlayerLocation> playerLocations) {
+        this.playerLocations = playerLocations;
+        return this;
     }
 
     @Override

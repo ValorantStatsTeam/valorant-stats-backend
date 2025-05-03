@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
  */
 @Configuration
 public class AppConfig {
-    @Value("${valorant.api.url}")
+    @Value("${henrikdev.api.url}")
     private String apiUrl;
 
     /**

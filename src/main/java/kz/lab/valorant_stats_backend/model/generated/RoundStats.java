@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -20,7 +23,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "stayed_in_spawn"
 })
 @Generated("jsonschema2pojo")
-public class RoundStats {
+public class RoundStats implements Serializable
+{
 
     /**
      * 
@@ -28,6 +32,8 @@ public class RoundStats {
      * 
      */
     @JsonProperty("ability_casts")
+    @Valid
+    @NotNull
     private AbilityCasts abilityCasts;
     /**
      * 
@@ -35,6 +41,8 @@ public class RoundStats {
      * 
      */
     @JsonProperty("player")
+    @Valid
+    @NotNull
     private PlayerInfo player;
     /**
      * 
@@ -42,6 +50,8 @@ public class RoundStats {
      * 
      */
     @JsonProperty("damage_events")
+    @Valid
+    @NotNull
     private List<DamageEvent> damageEvents = new ArrayList<DamageEvent>();
     /**
      * 
@@ -49,6 +59,8 @@ public class RoundStats {
      * 
      */
     @JsonProperty("stats")
+    @Valid
+    @NotNull
     private PlayerStats stats;
     /**
      * 
@@ -56,6 +68,8 @@ public class RoundStats {
      * 
      */
     @JsonProperty("economy")
+    @Valid
+    @NotNull
     private RoundEconomy economy;
     /**
      * 
@@ -63,6 +77,7 @@ public class RoundStats {
      * 
      */
     @JsonProperty("was_afk")
+    @NotNull
     private Boolean wasAfk;
     /**
      * 
@@ -70,6 +85,7 @@ public class RoundStats {
      * 
      */
     @JsonProperty("received_penalty")
+    @NotNull
     private Boolean receivedPenalty;
     /**
      * 
@@ -77,7 +93,28 @@ public class RoundStats {
      * 
      */
     @JsonProperty("stayed_in_spawn")
+    @NotNull
     private Boolean stayedInSpawn;
+    private final static long serialVersionUID = -7471613967791113358L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public RoundStats() {
+    }
+
+    public RoundStats(AbilityCasts abilityCasts, PlayerInfo player, List<DamageEvent> damageEvents, PlayerStats stats, RoundEconomy economy, Boolean wasAfk, Boolean receivedPenalty, Boolean stayedInSpawn) {
+        super();
+        this.abilityCasts = abilityCasts;
+        this.player = player;
+        this.damageEvents = damageEvents;
+        this.stats = stats;
+        this.economy = economy;
+        this.wasAfk = wasAfk;
+        this.receivedPenalty = receivedPenalty;
+        this.stayedInSpawn = stayedInSpawn;
+    }
 
     /**
      * 
@@ -97,6 +134,11 @@ public class RoundStats {
     @JsonProperty("ability_casts")
     public void setAbilityCasts(AbilityCasts abilityCasts) {
         this.abilityCasts = abilityCasts;
+    }
+
+    public RoundStats withAbilityCasts(AbilityCasts abilityCasts) {
+        this.abilityCasts = abilityCasts;
+        return this;
     }
 
     /**
@@ -119,6 +161,11 @@ public class RoundStats {
         this.player = player;
     }
 
+    public RoundStats withPlayer(PlayerInfo player) {
+        this.player = player;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -137,6 +184,11 @@ public class RoundStats {
     @JsonProperty("damage_events")
     public void setDamageEvents(List<DamageEvent> damageEvents) {
         this.damageEvents = damageEvents;
+    }
+
+    public RoundStats withDamageEvents(List<DamageEvent> damageEvents) {
+        this.damageEvents = damageEvents;
+        return this;
     }
 
     /**
@@ -159,6 +211,11 @@ public class RoundStats {
         this.stats = stats;
     }
 
+    public RoundStats withStats(PlayerStats stats) {
+        this.stats = stats;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -177,6 +234,11 @@ public class RoundStats {
     @JsonProperty("economy")
     public void setEconomy(RoundEconomy economy) {
         this.economy = economy;
+    }
+
+    public RoundStats withEconomy(RoundEconomy economy) {
+        this.economy = economy;
+        return this;
     }
 
     /**
@@ -199,6 +261,11 @@ public class RoundStats {
         this.wasAfk = wasAfk;
     }
 
+    public RoundStats withWasAfk(Boolean wasAfk) {
+        this.wasAfk = wasAfk;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -219,6 +286,11 @@ public class RoundStats {
         this.receivedPenalty = receivedPenalty;
     }
 
+    public RoundStats withReceivedPenalty(Boolean receivedPenalty) {
+        this.receivedPenalty = receivedPenalty;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -237,6 +309,11 @@ public class RoundStats {
     @JsonProperty("stayed_in_spawn")
     public void setStayedInSpawn(Boolean stayedInSpawn) {
         this.stayedInSpawn = stayedInSpawn;
+    }
+
+    public RoundStats withStayedInSpawn(Boolean stayedInSpawn) {
+        this.stayedInSpawn = stayedInSpawn;
+        return this;
     }
 
     @Override

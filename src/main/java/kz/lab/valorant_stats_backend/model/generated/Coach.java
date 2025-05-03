@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "team_id"
 })
 @Generated("jsonschema2pojo")
-public class Coach {
+public class Coach implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class Coach {
      * 
      */
     @JsonProperty("puuid")
+    @NotNull
     private String puuid;
     /**
      * 
@@ -27,7 +31,22 @@ public class Coach {
      * 
      */
     @JsonProperty("team_id")
+    @NotNull
     private String teamId;
+    private final static long serialVersionUID = -22137761191639827L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Coach() {
+    }
+
+    public Coach(String puuid, String teamId) {
+        super();
+        this.puuid = puuid;
+        this.teamId = teamId;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class Coach {
         this.puuid = puuid;
     }
 
+    public Coach withPuuid(String puuid) {
+        this.puuid = puuid;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class Coach {
     @JsonProperty("team_id")
     public void setTeamId(String teamId) {
         this.teamId = teamId;
+    }
+
+    public Coach withTeamId(String teamId) {
+        this.teamId = teamId;
+        return this;
     }
 
     @Override

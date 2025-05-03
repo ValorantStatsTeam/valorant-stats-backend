@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "received"
 })
 @Generated("jsonschema2pojo")
-public class Damage {
+public class Damage implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class Damage {
      * 
      */
     @JsonProperty("dealt")
+    @NotNull
     private Long dealt;
     /**
      * 
@@ -27,7 +31,22 @@ public class Damage {
      * 
      */
     @JsonProperty("received")
+    @NotNull
     private Long received;
+    private final static long serialVersionUID = -2055479627630961601L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Damage() {
+    }
+
+    public Damage(Long dealt, Long received) {
+        super();
+        this.dealt = dealt;
+        this.received = received;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class Damage {
         this.dealt = dealt;
     }
 
+    public Damage withDealt(Long dealt) {
+        this.dealt = dealt;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class Damage {
     @JsonProperty("received")
     public void setReceived(Long received) {
         this.received = received;
+    }
+
+    public Damage withReceived(Long received) {
+        this.received = received;
+        return this;
     }
 
     @Override

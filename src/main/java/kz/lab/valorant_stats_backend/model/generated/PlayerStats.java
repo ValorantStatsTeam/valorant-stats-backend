@@ -1,7 +1,10 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -18,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "damage"
 })
 @Generated("jsonschema2pojo")
-public class PlayerStats {
+public class PlayerStats implements Serializable
+{
 
     /**
      * 
@@ -26,6 +30,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("score")
+    @NotNull
     private Long score;
     /**
      * 
@@ -33,6 +38,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("kills")
+    @NotNull
     private Long kills;
     /**
      * 
@@ -40,6 +46,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("deaths")
+    @NotNull
     private Long deaths;
     /**
      * 
@@ -47,6 +54,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("assists")
+    @NotNull
     private Long assists;
     /**
      * 
@@ -54,6 +62,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("headshots")
+    @NotNull
     private Long headshots;
     /**
      * 
@@ -61,6 +70,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("legshots")
+    @NotNull
     private Long legshots;
     /**
      * 
@@ -68,6 +78,7 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("bodyshots")
+    @NotNull
     private Long bodyshots;
     /**
      * 
@@ -75,7 +86,29 @@ public class PlayerStats {
      * 
      */
     @JsonProperty("damage")
+    @Valid
+    @NotNull
     private Damage damage;
+    private final static long serialVersionUID = -8270614823527313132L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public PlayerStats() {
+    }
+
+    public PlayerStats(Long score, Long kills, Long deaths, Long assists, Long headshots, Long legshots, Long bodyshots, Damage damage) {
+        super();
+        this.score = score;
+        this.kills = kills;
+        this.deaths = deaths;
+        this.assists = assists;
+        this.headshots = headshots;
+        this.legshots = legshots;
+        this.bodyshots = bodyshots;
+        this.damage = damage;
+    }
 
     /**
      * 
@@ -95,6 +128,11 @@ public class PlayerStats {
     @JsonProperty("score")
     public void setScore(Long score) {
         this.score = score;
+    }
+
+    public PlayerStats withScore(Long score) {
+        this.score = score;
+        return this;
     }
 
     /**
@@ -117,6 +155,11 @@ public class PlayerStats {
         this.kills = kills;
     }
 
+    public PlayerStats withKills(Long kills) {
+        this.kills = kills;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -135,6 +178,11 @@ public class PlayerStats {
     @JsonProperty("deaths")
     public void setDeaths(Long deaths) {
         this.deaths = deaths;
+    }
+
+    public PlayerStats withDeaths(Long deaths) {
+        this.deaths = deaths;
+        return this;
     }
 
     /**
@@ -157,6 +205,11 @@ public class PlayerStats {
         this.assists = assists;
     }
 
+    public PlayerStats withAssists(Long assists) {
+        this.assists = assists;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -175,6 +228,11 @@ public class PlayerStats {
     @JsonProperty("headshots")
     public void setHeadshots(Long headshots) {
         this.headshots = headshots;
+    }
+
+    public PlayerStats withHeadshots(Long headshots) {
+        this.headshots = headshots;
+        return this;
     }
 
     /**
@@ -197,6 +255,11 @@ public class PlayerStats {
         this.legshots = legshots;
     }
 
+    public PlayerStats withLegshots(Long legshots) {
+        this.legshots = legshots;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -217,6 +280,11 @@ public class PlayerStats {
         this.bodyshots = bodyshots;
     }
 
+    public PlayerStats withBodyshots(Long bodyshots) {
+        this.bodyshots = bodyshots;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -235,6 +303,11 @@ public class PlayerStats {
     @JsonProperty("damage")
     public void setDamage(Damage damage) {
         this.damage = damage;
+    }
+
+    public PlayerStats withDamage(Damage damage) {
+        this.damage = damage;
+        return this;
     }
 
     @Override

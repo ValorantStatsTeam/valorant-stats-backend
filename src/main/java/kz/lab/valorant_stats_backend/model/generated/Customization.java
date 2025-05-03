@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -15,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "tertiary_color"
 })
 @Generated("jsonschema2pojo")
-public class Customization {
+public class Customization implements Serializable
+{
 
     /**
      * 
@@ -23,6 +26,7 @@ public class Customization {
      * 
      */
     @JsonProperty("icon")
+    @NotNull
     private String icon;
     /**
      * 
@@ -30,6 +34,7 @@ public class Customization {
      * 
      */
     @JsonProperty("image")
+    @NotNull
     private String image;
     /**
      * 
@@ -37,6 +42,7 @@ public class Customization {
      * 
      */
     @JsonProperty("primary_color")
+    @NotNull
     private String primaryColor;
     /**
      * 
@@ -44,6 +50,7 @@ public class Customization {
      * 
      */
     @JsonProperty("secondary_color")
+    @NotNull
     private String secondaryColor;
     /**
      * 
@@ -51,7 +58,25 @@ public class Customization {
      * 
      */
     @JsonProperty("tertiary_color")
+    @NotNull
     private String tertiaryColor;
+    private final static long serialVersionUID = -6268497049162829178L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Customization() {
+    }
+
+    public Customization(String icon, String image, String primaryColor, String secondaryColor, String tertiaryColor) {
+        super();
+        this.icon = icon;
+        this.image = image;
+        this.primaryColor = primaryColor;
+        this.secondaryColor = secondaryColor;
+        this.tertiaryColor = tertiaryColor;
+    }
 
     /**
      * 
@@ -71,6 +96,11 @@ public class Customization {
     @JsonProperty("icon")
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Customization withIcon(String icon) {
+        this.icon = icon;
+        return this;
     }
 
     /**
@@ -93,6 +123,11 @@ public class Customization {
         this.image = image;
     }
 
+    public Customization withImage(String image) {
+        this.image = image;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -111,6 +146,11 @@ public class Customization {
     @JsonProperty("primary_color")
     public void setPrimaryColor(String primaryColor) {
         this.primaryColor = primaryColor;
+    }
+
+    public Customization withPrimaryColor(String primaryColor) {
+        this.primaryColor = primaryColor;
+        return this;
     }
 
     /**
@@ -133,6 +173,11 @@ public class Customization {
         this.secondaryColor = secondaryColor;
     }
 
+    public Customization withSecondaryColor(String secondaryColor) {
+        this.secondaryColor = secondaryColor;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -151,6 +196,11 @@ public class Customization {
     @JsonProperty("tertiary_color")
     public void setTertiaryColor(String tertiaryColor) {
         this.tertiaryColor = tertiaryColor;
+    }
+
+    public Customization withTertiaryColor(String tertiaryColor) {
+        this.tertiaryColor = tertiaryColor;
+        return this;
     }
 
     @Override

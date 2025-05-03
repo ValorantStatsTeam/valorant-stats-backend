@@ -10,11 +10,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "short"
+    "type",
+    "count"
 })
 @Generated("jsonschema2pojo")
-public class Season implements Serializable
+public class GameType implements Serializable
 {
 
     /**
@@ -22,30 +22,30 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("id")
+    @JsonProperty("type")
     @NotNull
-    private String id;
+    private String type;
     /**
      * 
      * (Required)
      * 
      */
-    @JsonProperty("short")
+    @JsonProperty("count")
     @NotNull
-    private String _short;
-    private final static long serialVersionUID = 8887664015089275013L;
+    private Long count;
+    private final static long serialVersionUID = -5125029597468868184L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Season() {
+    public GameType() {
     }
 
-    public Season(String id, String _short) {
+    public GameType(String type, Long count) {
         super();
-        this.id = id;
-        this._short = _short;
+        this.type = type;
+        this.count = count;
     }
 
     /**
@@ -53,9 +53,9 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("id")
-    public String getId() {
-        return id;
+    @JsonProperty("type")
+    public String getType() {
+        return type;
     }
 
     /**
@@ -63,13 +63,13 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("id")
-    public void setId(String id) {
-        this.id = id;
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Season withId(String id) {
-        this.id = id;
+    public GameType withType(String type) {
+        this.type = type;
         return this;
     }
 
@@ -78,9 +78,9 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("short")
-    public String getShort() {
-        return _short;
+    @JsonProperty("count")
+    public Long getCount() {
+        return count;
     }
 
     /**
@@ -88,27 +88,27 @@ public class Season implements Serializable
      * (Required)
      * 
      */
-    @JsonProperty("short")
-    public void setShort(String _short) {
-        this._short = _short;
+    @JsonProperty("count")
+    public void setCount(Long count) {
+        this.count = count;
     }
 
-    public Season withShort(String _short) {
-        this._short = _short;
+    public GameType withCount(Long count) {
+        this.count = count;
         return this;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Season.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
+        sb.append(GameType.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("type");
         sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
+        sb.append(((this.type == null)?"<null>":this.type));
         sb.append(',');
-        sb.append("_short");
+        sb.append("count");
         sb.append('=');
-        sb.append(((this._short == null)?"<null>":this._short));
+        sb.append(((this.count == null)?"<null>":this.count));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -121,8 +121,8 @@ public class Season implements Serializable
     @Override
     public int hashCode() {
         int result = 1;
-        result = ((result* 31)+((this._short == null)? 0 :this._short.hashCode()));
-        result = ((result* 31)+((this.id == null)? 0 :this.id.hashCode()));
+        result = ((result* 31)+((this.type == null)? 0 :this.type.hashCode()));
+        result = ((result* 31)+((this.count == null)? 0 :this.count.hashCode()));
         return result;
     }
 
@@ -131,11 +131,11 @@ public class Season implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof Season) == false) {
+        if ((other instanceof GameType) == false) {
             return false;
         }
-        Season rhs = ((Season) other);
-        return (((this._short == rhs._short)||((this._short!= null)&&this._short.equals(rhs._short)))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))));
+        GameType rhs = ((GameType) other);
+        return (((this.type == rhs.type)||((this.type!= null)&&this.type.equals(rhs.type)))&&((this.count == rhs.count)||((this.count!= null)&&this.count.equals(rhs.count))));
     }
 
 }

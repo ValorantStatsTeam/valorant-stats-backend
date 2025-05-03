@@ -1,7 +1,10 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "location"
 })
 @Generated("jsonschema2pojo")
-public class PlayerLocation {
+public class PlayerLocation implements Serializable
+{
 
     /**
      * 
@@ -24,6 +28,7 @@ public class PlayerLocation {
      * 
      */
     @JsonProperty("puuid")
+    @NotNull
     private String puuid;
     /**
      * 
@@ -31,6 +36,7 @@ public class PlayerLocation {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -38,6 +44,7 @@ public class PlayerLocation {
      * 
      */
     @JsonProperty("tag")
+    @NotNull
     private String tag;
     /**
      * 
@@ -45,6 +52,7 @@ public class PlayerLocation {
      * 
      */
     @JsonProperty("team")
+    @NotNull
     private String team;
     /**
      * 
@@ -52,14 +60,35 @@ public class PlayerLocation {
      * 
      */
     @JsonProperty("view_radians")
-    private Long viewRadians;
+    @NotNull
+    private Double viewRadians;
     /**
      * 
      * (Required)
      * 
      */
     @JsonProperty("location")
+    @Valid
+    @NotNull
     private Location location;
+    private final static long serialVersionUID = 4679022846377679557L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public PlayerLocation() {
+    }
+
+    public PlayerLocation(String puuid, String name, String tag, String team, Double viewRadians, Location location) {
+        super();
+        this.puuid = puuid;
+        this.name = name;
+        this.tag = tag;
+        this.team = team;
+        this.viewRadians = viewRadians;
+        this.location = location;
+    }
 
     /**
      * 
@@ -79,6 +108,11 @@ public class PlayerLocation {
     @JsonProperty("puuid")
     public void setPuuid(String puuid) {
         this.puuid = puuid;
+    }
+
+    public PlayerLocation withPuuid(String puuid) {
+        this.puuid = puuid;
+        return this;
     }
 
     /**
@@ -101,6 +135,11 @@ public class PlayerLocation {
         this.name = name;
     }
 
+    public PlayerLocation withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -119,6 +158,11 @@ public class PlayerLocation {
     @JsonProperty("tag")
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public PlayerLocation withTag(String tag) {
+        this.tag = tag;
+        return this;
     }
 
     /**
@@ -141,13 +185,18 @@ public class PlayerLocation {
         this.team = team;
     }
 
+    public PlayerLocation withTeam(String team) {
+        this.team = team;
+        return this;
+    }
+
     /**
      * 
      * (Required)
      * 
      */
     @JsonProperty("view_radians")
-    public Long getViewRadians() {
+    public Double getViewRadians() {
         return viewRadians;
     }
 
@@ -157,8 +206,13 @@ public class PlayerLocation {
      * 
      */
     @JsonProperty("view_radians")
-    public void setViewRadians(Long viewRadians) {
+    public void setViewRadians(Double viewRadians) {
         this.viewRadians = viewRadians;
+    }
+
+    public PlayerLocation withViewRadians(Double viewRadians) {
+        this.viewRadians = viewRadians;
+        return this;
     }
 
     /**
@@ -179,6 +233,11 @@ public class PlayerLocation {
     @JsonProperty("location")
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public PlayerLocation withLocation(Location location) {
+        this.location = location;
+        return this;
     }
 
     @Override

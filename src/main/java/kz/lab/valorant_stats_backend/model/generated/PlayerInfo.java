@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -14,7 +16,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "team"
 })
 @Generated("jsonschema2pojo")
-public class PlayerInfo {
+public class PlayerInfo implements Serializable
+{
 
     /**
      * 
@@ -22,6 +25,7 @@ public class PlayerInfo {
      * 
      */
     @JsonProperty("puuid")
+    @NotNull
     private String puuid;
     /**
      * 
@@ -29,6 +33,7 @@ public class PlayerInfo {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -36,6 +41,7 @@ public class PlayerInfo {
      * 
      */
     @JsonProperty("tag")
+    @NotNull
     private String tag;
     /**
      * 
@@ -43,7 +49,24 @@ public class PlayerInfo {
      * 
      */
     @JsonProperty("team")
+    @NotNull
     private String team;
+    private final static long serialVersionUID = -707725823202163945L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public PlayerInfo() {
+    }
+
+    public PlayerInfo(String puuid, String name, String tag, String team) {
+        super();
+        this.puuid = puuid;
+        this.name = name;
+        this.tag = tag;
+        this.team = team;
+    }
 
     /**
      * 
@@ -63,6 +86,11 @@ public class PlayerInfo {
     @JsonProperty("puuid")
     public void setPuuid(String puuid) {
         this.puuid = puuid;
+    }
+
+    public PlayerInfo withPuuid(String puuid) {
+        this.puuid = puuid;
+        return this;
     }
 
     /**
@@ -85,6 +113,11 @@ public class PlayerInfo {
         this.name = name;
     }
 
+    public PlayerInfo withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -105,6 +138,11 @@ public class PlayerInfo {
         this.tag = tag;
     }
 
+    public PlayerInfo withTag(String tag) {
+        this.tag = tag;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -123,6 +161,11 @@ public class PlayerInfo {
     @JsonProperty("team")
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    public PlayerInfo withTeam(String team) {
+        this.team = team;
+        return this;
     }
 
     @Override

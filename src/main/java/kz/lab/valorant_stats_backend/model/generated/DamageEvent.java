@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -18,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "damage"
 })
 @Generated("jsonschema2pojo")
-public class DamageEvent {
+public class DamageEvent implements Serializable
+{
 
     /**
      * 
@@ -26,6 +29,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("puuid")
+    @NotNull
     private String puuid;
     /**
      * 
@@ -33,6 +37,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -40,6 +45,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("tag")
+    @NotNull
     private String tag;
     /**
      * 
@@ -47,6 +53,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("team")
+    @NotNull
     private String team;
     /**
      * 
@@ -54,6 +61,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("bodyshots")
+    @NotNull
     private Long bodyshots;
     /**
      * 
@@ -61,6 +69,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("headshots")
+    @NotNull
     private Long headshots;
     /**
      * 
@@ -68,6 +77,7 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("legshots")
+    @NotNull
     private Long legshots;
     /**
      * 
@@ -75,7 +85,28 @@ public class DamageEvent {
      * 
      */
     @JsonProperty("damage")
+    @NotNull
     private Long damage;
+    private final static long serialVersionUID = 5860708905425047771L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public DamageEvent() {
+    }
+
+    public DamageEvent(String puuid, String name, String tag, String team, Long bodyshots, Long headshots, Long legshots, Long damage) {
+        super();
+        this.puuid = puuid;
+        this.name = name;
+        this.tag = tag;
+        this.team = team;
+        this.bodyshots = bodyshots;
+        this.headshots = headshots;
+        this.legshots = legshots;
+        this.damage = damage;
+    }
 
     /**
      * 
@@ -95,6 +126,11 @@ public class DamageEvent {
     @JsonProperty("puuid")
     public void setPuuid(String puuid) {
         this.puuid = puuid;
+    }
+
+    public DamageEvent withPuuid(String puuid) {
+        this.puuid = puuid;
+        return this;
     }
 
     /**
@@ -117,6 +153,11 @@ public class DamageEvent {
         this.name = name;
     }
 
+    public DamageEvent withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -135,6 +176,11 @@ public class DamageEvent {
     @JsonProperty("tag")
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public DamageEvent withTag(String tag) {
+        this.tag = tag;
+        return this;
     }
 
     /**
@@ -157,6 +203,11 @@ public class DamageEvent {
         this.team = team;
     }
 
+    public DamageEvent withTeam(String team) {
+        this.team = team;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -175,6 +226,11 @@ public class DamageEvent {
     @JsonProperty("bodyshots")
     public void setBodyshots(Long bodyshots) {
         this.bodyshots = bodyshots;
+    }
+
+    public DamageEvent withBodyshots(Long bodyshots) {
+        this.bodyshots = bodyshots;
+        return this;
     }
 
     /**
@@ -197,6 +253,11 @@ public class DamageEvent {
         this.headshots = headshots;
     }
 
+    public DamageEvent withHeadshots(Long headshots) {
+        this.headshots = headshots;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -217,6 +278,11 @@ public class DamageEvent {
         this.legshots = legshots;
     }
 
+    public DamageEvent withLegshots(Long legshots) {
+        this.legshots = legshots;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -235,6 +301,11 @@ public class DamageEvent {
     @JsonProperty("damage")
     public void setDamage(Long damage) {
         this.damage = damage;
+    }
+
+    public DamageEvent withDamage(Long damage) {
+        this.damage = damage;
+        return this;
     }
 
     @Override

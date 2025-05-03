@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "name"
 })
 @Generated("jsonschema2pojo")
-public class Armor {
+public class Armor implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class Armor {
      * 
      */
     @JsonProperty("id")
+    @NotNull
     private String id;
     /**
      * 
@@ -27,7 +31,22 @@ public class Armor {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
+    private final static long serialVersionUID = -8960693413826690424L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Armor() {
+    }
+
+    public Armor(String id, String name) {
+        super();
+        this.id = id;
+        this.name = name;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class Armor {
         this.id = id;
     }
 
+    public Armor withId(String id) {
+        this.id = id;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class Armor {
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Armor withName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override

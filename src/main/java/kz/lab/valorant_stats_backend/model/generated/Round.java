@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -19,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "stats"
 })
 @Generated("jsonschema2pojo")
-public class Round {
+public class Round implements Serializable
+{
 
     /**
      * 
@@ -27,6 +31,7 @@ public class Round {
      * 
      */
     @JsonProperty("id")
+    @NotNull
     private Long id;
     /**
      * 
@@ -34,6 +39,7 @@ public class Round {
      * 
      */
     @JsonProperty("result")
+    @NotNull
     private String result;
     /**
      * 
@@ -41,6 +47,7 @@ public class Round {
      * 
      */
     @JsonProperty("ceremony")
+    @NotNull
     private String ceremony;
     /**
      * 
@@ -48,6 +55,7 @@ public class Round {
      * 
      */
     @JsonProperty("winning_team")
+    @NotNull
     private String winningTeam;
     /**
      * 
@@ -55,6 +63,8 @@ public class Round {
      * 
      */
     @JsonProperty("plant")
+    @Valid
+    @NotNull
     private Plant plant;
     /**
      * 
@@ -62,6 +72,8 @@ public class Round {
      * 
      */
     @JsonProperty("defuse")
+    @Valid
+    @NotNull
     private Defuse defuse;
     /**
      * 
@@ -69,7 +81,28 @@ public class Round {
      * 
      */
     @JsonProperty("stats")
+    @Valid
+    @NotNull
     private List<RoundStats> stats = new ArrayList<RoundStats>();
+    private final static long serialVersionUID = -7059380060996491551L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Round() {
+    }
+
+    public Round(Long id, String result, String ceremony, String winningTeam, Plant plant, Defuse defuse, List<RoundStats> stats) {
+        super();
+        this.id = id;
+        this.result = result;
+        this.ceremony = ceremony;
+        this.winningTeam = winningTeam;
+        this.plant = plant;
+        this.defuse = defuse;
+        this.stats = stats;
+    }
 
     /**
      * 
@@ -89,6 +122,11 @@ public class Round {
     @JsonProperty("id")
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Round withId(Long id) {
+        this.id = id;
+        return this;
     }
 
     /**
@@ -111,6 +149,11 @@ public class Round {
         this.result = result;
     }
 
+    public Round withResult(String result) {
+        this.result = result;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -129,6 +172,11 @@ public class Round {
     @JsonProperty("ceremony")
     public void setCeremony(String ceremony) {
         this.ceremony = ceremony;
+    }
+
+    public Round withCeremony(String ceremony) {
+        this.ceremony = ceremony;
+        return this;
     }
 
     /**
@@ -151,6 +199,11 @@ public class Round {
         this.winningTeam = winningTeam;
     }
 
+    public Round withWinningTeam(String winningTeam) {
+        this.winningTeam = winningTeam;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -169,6 +222,11 @@ public class Round {
     @JsonProperty("plant")
     public void setPlant(Plant plant) {
         this.plant = plant;
+    }
+
+    public Round withPlant(Plant plant) {
+        this.plant = plant;
+        return this;
     }
 
     /**
@@ -191,6 +249,11 @@ public class Round {
         this.defuse = defuse;
     }
 
+    public Round withDefuse(Defuse defuse) {
+        this.defuse = defuse;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -209,6 +272,11 @@ public class Round {
     @JsonProperty("stats")
     public void setStats(List<RoundStats> stats) {
         this.stats = stats;
+    }
+
+    public Round withStats(List<RoundStats> stats) {
+        this.stats = stats;
+        return this;
     }
 
     @Override

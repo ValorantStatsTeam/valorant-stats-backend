@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -14,7 +16,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "ultimate"
 })
 @Generated("jsonschema2pojo")
-public class AbilityCasts {
+public class AbilityCasts implements Serializable
+{
 
     /**
      * 
@@ -22,6 +25,7 @@ public class AbilityCasts {
      * 
      */
     @JsonProperty("grenade")
+    @NotNull
     private Long grenade;
     /**
      * 
@@ -29,6 +33,7 @@ public class AbilityCasts {
      * 
      */
     @JsonProperty("ability_1")
+    @NotNull
     private Long ability1;
     /**
      * 
@@ -36,6 +41,7 @@ public class AbilityCasts {
      * 
      */
     @JsonProperty("ability_2")
+    @NotNull
     private Long ability2;
     /**
      * 
@@ -43,7 +49,24 @@ public class AbilityCasts {
      * 
      */
     @JsonProperty("ultimate")
+    @NotNull
     private Long ultimate;
+    private final static long serialVersionUID = -6304604696612471L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public AbilityCasts() {
+    }
+
+    public AbilityCasts(Long grenade, Long ability1, Long ability2, Long ultimate) {
+        super();
+        this.grenade = grenade;
+        this.ability1 = ability1;
+        this.ability2 = ability2;
+        this.ultimate = ultimate;
+    }
 
     /**
      * 
@@ -63,6 +86,11 @@ public class AbilityCasts {
     @JsonProperty("grenade")
     public void setGrenade(Long grenade) {
         this.grenade = grenade;
+    }
+
+    public AbilityCasts withGrenade(Long grenade) {
+        this.grenade = grenade;
+        return this;
     }
 
     /**
@@ -85,6 +113,11 @@ public class AbilityCasts {
         this.ability1 = ability1;
     }
 
+    public AbilityCasts withAbility1(Long ability1) {
+        this.ability1 = ability1;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -105,6 +138,11 @@ public class AbilityCasts {
         this.ability2 = ability2;
     }
 
+    public AbilityCasts withAbility2(Long ability2) {
+        this.ability2 = ability2;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -123,6 +161,11 @@ public class AbilityCasts {
     @JsonProperty("ultimate")
     public void setUltimate(Long ultimate) {
         this.ultimate = ultimate;
+    }
+
+    public AbilityCasts withUltimate(Long ultimate) {
+        this.ultimate = ultimate;
+        return this;
     }
 
     @Override

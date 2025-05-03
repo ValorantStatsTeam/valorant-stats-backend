@@ -1,10 +1,13 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -26,7 +29,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "cluster"
 })
 @Generated("jsonschema2pojo")
-public class Metadata {
+public class Metadata implements Serializable
+{
 
     /**
      * 
@@ -34,6 +38,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("match_id")
+    @NotNull
     private String matchId;
     /**
      * 
@@ -41,6 +46,8 @@ public class Metadata {
      * 
      */
     @JsonProperty("map")
+    @Valid
+    @NotNull
     private Map map;
     /**
      * 
@@ -48,6 +55,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("game_version")
+    @NotNull
     private String gameVersion;
     /**
      * 
@@ -55,6 +63,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("game_length_in_ms")
+    @NotNull
     private Long gameLengthInMs;
     /**
      * 
@@ -62,6 +71,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("started_at")
+    @NotNull
     private Date startedAt;
     /**
      * 
@@ -69,6 +79,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("is_completed")
+    @NotNull
     private Boolean isCompleted;
     /**
      * 
@@ -76,6 +87,8 @@ public class Metadata {
      * 
      */
     @JsonProperty("queue")
+    @Valid
+    @NotNull
     private Queue queue;
     /**
      * 
@@ -83,6 +96,8 @@ public class Metadata {
      * 
      */
     @JsonProperty("season")
+    @Valid
+    @NotNull
     private Season season;
     /**
      * 
@@ -90,6 +105,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("platform")
+    @NotNull
     private String platform;
     /**
      * 
@@ -97,6 +113,8 @@ public class Metadata {
      * 
      */
     @JsonProperty("premier")
+    @Valid
+    @NotNull
     private Premier premier;
     /**
      * 
@@ -104,6 +122,8 @@ public class Metadata {
      * 
      */
     @JsonProperty("party_rr_penaltys")
+    @Valid
+    @NotNull
     private List<PartyPenalty> partyRrPenaltys = new ArrayList<PartyPenalty>();
     /**
      * 
@@ -111,6 +131,7 @@ public class Metadata {
      * 
      */
     @JsonProperty("region")
+    @NotNull
     private String region;
     /**
      * 
@@ -118,7 +139,33 @@ public class Metadata {
      * 
      */
     @JsonProperty("cluster")
+    @NotNull
     private String cluster;
+    private final static long serialVersionUID = -1944746326222752374L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Metadata() {
+    }
+
+    public Metadata(String matchId, Map map, String gameVersion, Long gameLengthInMs, Date startedAt, Boolean isCompleted, Queue queue, Season season, String platform, Premier premier, List<PartyPenalty> partyRrPenaltys, String region, String cluster) {
+        super();
+        this.matchId = matchId;
+        this.map = map;
+        this.gameVersion = gameVersion;
+        this.gameLengthInMs = gameLengthInMs;
+        this.startedAt = startedAt;
+        this.isCompleted = isCompleted;
+        this.queue = queue;
+        this.season = season;
+        this.platform = platform;
+        this.premier = premier;
+        this.partyRrPenaltys = partyRrPenaltys;
+        this.region = region;
+        this.cluster = cluster;
+    }
 
     /**
      * 
@@ -138,6 +185,11 @@ public class Metadata {
     @JsonProperty("match_id")
     public void setMatchId(String matchId) {
         this.matchId = matchId;
+    }
+
+    public Metadata withMatchId(String matchId) {
+        this.matchId = matchId;
+        return this;
     }
 
     /**
@@ -160,6 +212,11 @@ public class Metadata {
         this.map = map;
     }
 
+    public Metadata withMap(Map map) {
+        this.map = map;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -178,6 +235,11 @@ public class Metadata {
     @JsonProperty("game_version")
     public void setGameVersion(String gameVersion) {
         this.gameVersion = gameVersion;
+    }
+
+    public Metadata withGameVersion(String gameVersion) {
+        this.gameVersion = gameVersion;
+        return this;
     }
 
     /**
@@ -200,6 +262,11 @@ public class Metadata {
         this.gameLengthInMs = gameLengthInMs;
     }
 
+    public Metadata withGameLengthInMs(Long gameLengthInMs) {
+        this.gameLengthInMs = gameLengthInMs;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -218,6 +285,11 @@ public class Metadata {
     @JsonProperty("started_at")
     public void setStartedAt(Date startedAt) {
         this.startedAt = startedAt;
+    }
+
+    public Metadata withStartedAt(Date startedAt) {
+        this.startedAt = startedAt;
+        return this;
     }
 
     /**
@@ -240,6 +312,11 @@ public class Metadata {
         this.isCompleted = isCompleted;
     }
 
+    public Metadata withIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -258,6 +335,11 @@ public class Metadata {
     @JsonProperty("queue")
     public void setQueue(Queue queue) {
         this.queue = queue;
+    }
+
+    public Metadata withQueue(Queue queue) {
+        this.queue = queue;
+        return this;
     }
 
     /**
@@ -280,6 +362,11 @@ public class Metadata {
         this.season = season;
     }
 
+    public Metadata withSeason(Season season) {
+        this.season = season;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -298,6 +385,11 @@ public class Metadata {
     @JsonProperty("platform")
     public void setPlatform(String platform) {
         this.platform = platform;
+    }
+
+    public Metadata withPlatform(String platform) {
+        this.platform = platform;
+        return this;
     }
 
     /**
@@ -320,6 +412,11 @@ public class Metadata {
         this.premier = premier;
     }
 
+    public Metadata withPremier(Premier premier) {
+        this.premier = premier;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -338,6 +435,11 @@ public class Metadata {
     @JsonProperty("party_rr_penaltys")
     public void setPartyRrPenaltys(List<PartyPenalty> partyRrPenaltys) {
         this.partyRrPenaltys = partyRrPenaltys;
+    }
+
+    public Metadata withPartyRrPenaltys(List<PartyPenalty> partyRrPenaltys) {
+        this.partyRrPenaltys = partyRrPenaltys;
+        return this;
     }
 
     /**
@@ -360,6 +462,11 @@ public class Metadata {
         this.region = region;
     }
 
+    public Metadata withRegion(String region) {
+        this.region = region;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -378,6 +485,11 @@ public class Metadata {
     @JsonProperty("cluster")
     public void setCluster(String cluster) {
         this.cluster = cluster;
+    }
+
+    public Metadata withCluster(String cluster) {
+        this.cluster = cluster;
+        return this;
     }
 
     @Override

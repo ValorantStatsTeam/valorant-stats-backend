@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "lost"
 })
 @Generated("jsonschema2pojo")
-public class Rounds {
+public class Rounds implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class Rounds {
      * 
      */
     @JsonProperty("won")
+    @NotNull
     private Long won;
     /**
      * 
@@ -27,7 +31,22 @@ public class Rounds {
      * 
      */
     @JsonProperty("lost")
+    @NotNull
     private Long lost;
+    private final static long serialVersionUID = -6934221216442930401L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Rounds() {
+    }
+
+    public Rounds(Long won, Long lost) {
+        super();
+        this.won = won;
+        this.lost = lost;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class Rounds {
         this.won = won;
     }
 
+    public Rounds withWon(Long won) {
+        this.won = won;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class Rounds {
     @JsonProperty("lost")
     public void setLost(Long lost) {
         this.lost = lost;
+    }
+
+    public Rounds withLost(Long lost) {
+        this.lost = lost;
+        return this;
     }
 
     @Override

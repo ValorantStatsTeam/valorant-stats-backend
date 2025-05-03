@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -18,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "party_id"
 })
 @Generated("jsonschema2pojo")
-public class Observer {
+public class Observer implements Serializable
+{
 
     /**
      * 
@@ -26,6 +29,7 @@ public class Observer {
      * 
      */
     @JsonProperty("puuid")
+    @NotNull
     private String puuid;
     /**
      * 
@@ -33,6 +37,7 @@ public class Observer {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -40,6 +45,7 @@ public class Observer {
      * 
      */
     @JsonProperty("tag")
+    @NotNull
     private String tag;
     /**
      * 
@@ -47,6 +53,7 @@ public class Observer {
      * 
      */
     @JsonProperty("account_level")
+    @NotNull
     private Long accountLevel;
     /**
      * 
@@ -54,6 +61,7 @@ public class Observer {
      * 
      */
     @JsonProperty("session_playtime_in_ms")
+    @NotNull
     private Long sessionPlaytimeInMs;
     /**
      * 
@@ -61,6 +69,7 @@ public class Observer {
      * 
      */
     @JsonProperty("card_id")
+    @NotNull
     private String cardId;
     /**
      * 
@@ -68,6 +77,7 @@ public class Observer {
      * 
      */
     @JsonProperty("title_id")
+    @NotNull
     private String titleId;
     /**
      * 
@@ -75,7 +85,28 @@ public class Observer {
      * 
      */
     @JsonProperty("party_id")
+    @NotNull
     private String partyId;
+    private final static long serialVersionUID = -4247390674913997623L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Observer() {
+    }
+
+    public Observer(String puuid, String name, String tag, Long accountLevel, Long sessionPlaytimeInMs, String cardId, String titleId, String partyId) {
+        super();
+        this.puuid = puuid;
+        this.name = name;
+        this.tag = tag;
+        this.accountLevel = accountLevel;
+        this.sessionPlaytimeInMs = sessionPlaytimeInMs;
+        this.cardId = cardId;
+        this.titleId = titleId;
+        this.partyId = partyId;
+    }
 
     /**
      * 
@@ -95,6 +126,11 @@ public class Observer {
     @JsonProperty("puuid")
     public void setPuuid(String puuid) {
         this.puuid = puuid;
+    }
+
+    public Observer withPuuid(String puuid) {
+        this.puuid = puuid;
+        return this;
     }
 
     /**
@@ -117,6 +153,11 @@ public class Observer {
         this.name = name;
     }
 
+    public Observer withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -135,6 +176,11 @@ public class Observer {
     @JsonProperty("tag")
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public Observer withTag(String tag) {
+        this.tag = tag;
+        return this;
     }
 
     /**
@@ -157,6 +203,11 @@ public class Observer {
         this.accountLevel = accountLevel;
     }
 
+    public Observer withAccountLevel(Long accountLevel) {
+        this.accountLevel = accountLevel;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -175,6 +226,11 @@ public class Observer {
     @JsonProperty("session_playtime_in_ms")
     public void setSessionPlaytimeInMs(Long sessionPlaytimeInMs) {
         this.sessionPlaytimeInMs = sessionPlaytimeInMs;
+    }
+
+    public Observer withSessionPlaytimeInMs(Long sessionPlaytimeInMs) {
+        this.sessionPlaytimeInMs = sessionPlaytimeInMs;
+        return this;
     }
 
     /**
@@ -197,6 +253,11 @@ public class Observer {
         this.cardId = cardId;
     }
 
+    public Observer withCardId(String cardId) {
+        this.cardId = cardId;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -217,6 +278,11 @@ public class Observer {
         this.titleId = titleId;
     }
 
+    public Observer withTitleId(String titleId) {
+        this.titleId = titleId;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -235,6 +301,11 @@ public class Observer {
     @JsonProperty("party_id")
     public void setPartyId(String partyId) {
         this.partyId = partyId;
+    }
+
+    public Observer withPartyId(String partyId) {
+        this.partyId = partyId;
+        return this;
     }
 
     @Override

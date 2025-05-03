@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -22,7 +25,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "player_locations"
 })
 @Generated("jsonschema2pojo")
-public class Kill {
+public class Kill implements Serializable
+{
 
     /**
      * 
@@ -30,6 +34,7 @@ public class Kill {
      * 
      */
     @JsonProperty("round")
+    @NotNull
     private Long round;
     /**
      * 
@@ -37,6 +42,7 @@ public class Kill {
      * 
      */
     @JsonProperty("time_in_round_in_ms")
+    @NotNull
     private Long timeInRoundInMs;
     /**
      * 
@@ -44,6 +50,7 @@ public class Kill {
      * 
      */
     @JsonProperty("time_in_match_in_ms")
+    @NotNull
     private Long timeInMatchInMs;
     /**
      * 
@@ -51,6 +58,8 @@ public class Kill {
      * 
      */
     @JsonProperty("killer")
+    @Valid
+    @NotNull
     private PlayerInfo killer;
     /**
      * 
@@ -58,6 +67,8 @@ public class Kill {
      * 
      */
     @JsonProperty("victim")
+    @Valid
+    @NotNull
     private PlayerInfo victim;
     /**
      * 
@@ -65,6 +76,8 @@ public class Kill {
      * 
      */
     @JsonProperty("assistants")
+    @Valid
+    @NotNull
     private List<PlayerInfo> assistants = new ArrayList<PlayerInfo>();
     /**
      * 
@@ -72,6 +85,8 @@ public class Kill {
      * 
      */
     @JsonProperty("location")
+    @Valid
+    @NotNull
     private Location location;
     /**
      * 
@@ -79,6 +94,8 @@ public class Kill {
      * 
      */
     @JsonProperty("weapon")
+    @Valid
+    @NotNull
     private Weapon weapon;
     /**
      * 
@@ -86,6 +103,7 @@ public class Kill {
      * 
      */
     @JsonProperty("secondary_fire_mode")
+    @NotNull
     private Boolean secondaryFireMode;
     /**
      * 
@@ -93,7 +111,31 @@ public class Kill {
      * 
      */
     @JsonProperty("player_locations")
+    @Valid
+    @NotNull
     private List<PlayerLocation> playerLocations = new ArrayList<PlayerLocation>();
+    private final static long serialVersionUID = -7948340985382177702L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Kill() {
+    }
+
+    public Kill(Long round, Long timeInRoundInMs, Long timeInMatchInMs, PlayerInfo killer, PlayerInfo victim, List<PlayerInfo> assistants, Location location, Weapon weapon, Boolean secondaryFireMode, List<PlayerLocation> playerLocations) {
+        super();
+        this.round = round;
+        this.timeInRoundInMs = timeInRoundInMs;
+        this.timeInMatchInMs = timeInMatchInMs;
+        this.killer = killer;
+        this.victim = victim;
+        this.assistants = assistants;
+        this.location = location;
+        this.weapon = weapon;
+        this.secondaryFireMode = secondaryFireMode;
+        this.playerLocations = playerLocations;
+    }
 
     /**
      * 
@@ -113,6 +155,11 @@ public class Kill {
     @JsonProperty("round")
     public void setRound(Long round) {
         this.round = round;
+    }
+
+    public Kill withRound(Long round) {
+        this.round = round;
+        return this;
     }
 
     /**
@@ -135,6 +182,11 @@ public class Kill {
         this.timeInRoundInMs = timeInRoundInMs;
     }
 
+    public Kill withTimeInRoundInMs(Long timeInRoundInMs) {
+        this.timeInRoundInMs = timeInRoundInMs;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -153,6 +205,11 @@ public class Kill {
     @JsonProperty("time_in_match_in_ms")
     public void setTimeInMatchInMs(Long timeInMatchInMs) {
         this.timeInMatchInMs = timeInMatchInMs;
+    }
+
+    public Kill withTimeInMatchInMs(Long timeInMatchInMs) {
+        this.timeInMatchInMs = timeInMatchInMs;
+        return this;
     }
 
     /**
@@ -175,6 +232,11 @@ public class Kill {
         this.killer = killer;
     }
 
+    public Kill withKiller(PlayerInfo killer) {
+        this.killer = killer;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -193,6 +255,11 @@ public class Kill {
     @JsonProperty("victim")
     public void setVictim(PlayerInfo victim) {
         this.victim = victim;
+    }
+
+    public Kill withVictim(PlayerInfo victim) {
+        this.victim = victim;
+        return this;
     }
 
     /**
@@ -215,6 +282,11 @@ public class Kill {
         this.assistants = assistants;
     }
 
+    public Kill withAssistants(List<PlayerInfo> assistants) {
+        this.assistants = assistants;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -233,6 +305,11 @@ public class Kill {
     @JsonProperty("location")
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Kill withLocation(Location location) {
+        this.location = location;
+        return this;
     }
 
     /**
@@ -255,6 +332,11 @@ public class Kill {
         this.weapon = weapon;
     }
 
+    public Kill withWeapon(Weapon weapon) {
+        this.weapon = weapon;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -275,6 +357,11 @@ public class Kill {
         this.secondaryFireMode = secondaryFireMode;
     }
 
+    public Kill withSecondaryFireMode(Boolean secondaryFireMode) {
+        this.secondaryFireMode = secondaryFireMode;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -293,6 +380,11 @@ public class Kill {
     @JsonProperty("player_locations")
     public void setPlayerLocations(List<PlayerLocation> playerLocations) {
         this.playerLocations = playerLocations;
+    }
+
+    public Kill withPlayerLocations(List<PlayerLocation> playerLocations) {
+        this.playerLocations = playerLocations;
+        return this;
     }
 
     @Override

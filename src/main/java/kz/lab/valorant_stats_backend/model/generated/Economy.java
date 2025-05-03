@@ -1,7 +1,10 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "loadout_value"
 })
 @Generated("jsonschema2pojo")
-public class Economy {
+public class Economy implements Serializable
+{
 
     /**
      * 
@@ -20,6 +24,8 @@ public class Economy {
      * 
      */
     @JsonProperty("spent")
+    @Valid
+    @NotNull
     private EconomyValue spent;
     /**
      * 
@@ -27,7 +33,23 @@ public class Economy {
      * 
      */
     @JsonProperty("loadout_value")
+    @Valid
+    @NotNull
     private EconomyValue loadoutValue;
+    private final static long serialVersionUID = -5671957563667117668L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Economy() {
+    }
+
+    public Economy(EconomyValue spent, EconomyValue loadoutValue) {
+        super();
+        this.spent = spent;
+        this.loadoutValue = loadoutValue;
+    }
 
     /**
      * 
@@ -49,6 +71,11 @@ public class Economy {
         this.spent = spent;
     }
 
+    public Economy withSpent(EconomyValue spent) {
+        this.spent = spent;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +94,11 @@ public class Economy {
     @JsonProperty("loadout_value")
     public void setLoadoutValue(EconomyValue loadoutValue) {
         this.loadoutValue = loadoutValue;
+    }
+
+    public Economy withLoadoutValue(EconomyValue loadoutValue) {
+        this.loadoutValue = loadoutValue;
+        return this;
     }
 
     @Override

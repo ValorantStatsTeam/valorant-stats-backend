@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "customization"
 })
 @Generated("jsonschema2pojo")
-public class PremierRoster {
+public class PremierRoster implements Serializable
+{
 
     /**
      * 
@@ -25,6 +29,7 @@ public class PremierRoster {
      * 
      */
     @JsonProperty("id")
+    @NotNull
     private String id;
     /**
      * 
@@ -32,6 +37,7 @@ public class PremierRoster {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -39,6 +45,7 @@ public class PremierRoster {
      * 
      */
     @JsonProperty("tag")
+    @NotNull
     private String tag;
     /**
      * 
@@ -46,6 +53,8 @@ public class PremierRoster {
      * 
      */
     @JsonProperty("members")
+    @Valid
+    @NotNull
     private List<String> members = new ArrayList<String>();
     /**
      * 
@@ -53,7 +62,26 @@ public class PremierRoster {
      * 
      */
     @JsonProperty("customization")
+    @Valid
+    @NotNull
     private Customization customization;
+    private final static long serialVersionUID = 4455671690671174056L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public PremierRoster() {
+    }
+
+    public PremierRoster(String id, String name, String tag, List<String> members, Customization customization) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.tag = tag;
+        this.members = members;
+        this.customization = customization;
+    }
 
     /**
      * 
@@ -73,6 +101,11 @@ public class PremierRoster {
     @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
+    }
+
+    public PremierRoster withId(String id) {
+        this.id = id;
+        return this;
     }
 
     /**
@@ -95,6 +128,11 @@ public class PremierRoster {
         this.name = name;
     }
 
+    public PremierRoster withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -113,6 +151,11 @@ public class PremierRoster {
     @JsonProperty("tag")
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public PremierRoster withTag(String tag) {
+        this.tag = tag;
+        return this;
     }
 
     /**
@@ -135,6 +178,11 @@ public class PremierRoster {
         this.members = members;
     }
 
+    public PremierRoster withMembers(List<String> members) {
+        this.members = members;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -153,6 +201,11 @@ public class PremierRoster {
     @JsonProperty("customization")
     public void setCustomization(Customization customization) {
         this.customization = customization;
+    }
+
+    public PremierRoster withCustomization(Customization customization) {
+        this.customization = customization;
+        return this;
     }
 
     @Override

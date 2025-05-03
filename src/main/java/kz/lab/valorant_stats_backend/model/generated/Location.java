@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "y"
 })
 @Generated("jsonschema2pojo")
-public class Location {
+public class Location implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class Location {
      * 
      */
     @JsonProperty("x")
+    @NotNull
     private Long x;
     /**
      * 
@@ -27,7 +31,22 @@ public class Location {
      * 
      */
     @JsonProperty("y")
+    @NotNull
     private Long y;
+    private final static long serialVersionUID = -5605381461416465363L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Location() {
+    }
+
+    public Location(Long x, Long y) {
+        super();
+        this.x = x;
+        this.y = y;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class Location {
         this.x = x;
     }
 
+    public Location withX(Long x) {
+        this.x = x;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class Location {
     @JsonProperty("y")
     public void setY(Long y) {
         this.y = y;
+    }
+
+    public Location withY(Long y) {
+        this.y = y;
+        return this;
     }
 
     @Override

@@ -1,7 +1,9 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "penalty"
 })
 @Generated("jsonschema2pojo")
-public class PartyPenalty {
+public class PartyPenalty implements Serializable
+{
 
     /**
      * 
@@ -20,6 +23,7 @@ public class PartyPenalty {
      * 
      */
     @JsonProperty("party_id")
+    @NotNull
     private String partyId;
     /**
      * 
@@ -27,7 +31,22 @@ public class PartyPenalty {
      * 
      */
     @JsonProperty("penalty")
+    @NotNull
     private Long penalty;
+    private final static long serialVersionUID = -4929581803109080167L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public PartyPenalty() {
+    }
+
+    public PartyPenalty(String partyId, Long penalty) {
+        super();
+        this.partyId = partyId;
+        this.penalty = penalty;
+    }
 
     /**
      * 
@@ -49,6 +68,11 @@ public class PartyPenalty {
         this.partyId = partyId;
     }
 
+    public PartyPenalty withPartyId(String partyId) {
+        this.partyId = partyId;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -67,6 +91,11 @@ public class PartyPenalty {
     @JsonProperty("penalty")
     public void setPenalty(Long penalty) {
         this.penalty = penalty;
+    }
+
+    public PartyPenalty withPenalty(Long penalty) {
+        this.penalty = penalty;
+        return this;
     }
 
     @Override

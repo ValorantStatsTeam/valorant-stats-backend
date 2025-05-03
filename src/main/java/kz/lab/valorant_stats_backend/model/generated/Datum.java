@@ -1,9 +1,12 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -19,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "kills"
 })
 @Generated("jsonschema2pojo")
-public class Datum {
+public class Datum implements Serializable
+{
 
     /**
      * 
@@ -27,6 +31,8 @@ public class Datum {
      * 
      */
     @JsonProperty("metadata")
+    @Valid
+    @NotNull
     private Metadata metadata;
     /**
      * 
@@ -34,6 +40,8 @@ public class Datum {
      * 
      */
     @JsonProperty("players")
+    @Valid
+    @NotNull
     private List<Player> players = new ArrayList<Player>();
     /**
      * 
@@ -41,6 +49,8 @@ public class Datum {
      * 
      */
     @JsonProperty("observers")
+    @Valid
+    @NotNull
     private List<Observer> observers = new ArrayList<Observer>();
     /**
      * 
@@ -48,6 +58,8 @@ public class Datum {
      * 
      */
     @JsonProperty("coaches")
+    @Valid
+    @NotNull
     private List<Coach> coaches = new ArrayList<Coach>();
     /**
      * 
@@ -55,6 +67,8 @@ public class Datum {
      * 
      */
     @JsonProperty("teams")
+    @Valid
+    @NotNull
     private List<Team> teams = new ArrayList<Team>();
     /**
      * 
@@ -62,6 +76,8 @@ public class Datum {
      * 
      */
     @JsonProperty("rounds")
+    @Valid
+    @NotNull
     private List<Round> rounds = new ArrayList<Round>();
     /**
      * 
@@ -69,7 +85,28 @@ public class Datum {
      * 
      */
     @JsonProperty("kills")
+    @Valid
+    @NotNull
     private List<Kill> kills = new ArrayList<Kill>();
+    private final static long serialVersionUID = 5962411754230848379L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Datum() {
+    }
+
+    public Datum(Metadata metadata, List<Player> players, List<Observer> observers, List<Coach> coaches, List<Team> teams, List<Round> rounds, List<Kill> kills) {
+        super();
+        this.metadata = metadata;
+        this.players = players;
+        this.observers = observers;
+        this.coaches = coaches;
+        this.teams = teams;
+        this.rounds = rounds;
+        this.kills = kills;
+    }
 
     /**
      * 
@@ -89,6 +126,11 @@ public class Datum {
     @JsonProperty("metadata")
     public void setMetadata(Metadata metadata) {
         this.metadata = metadata;
+    }
+
+    public Datum withMetadata(Metadata metadata) {
+        this.metadata = metadata;
+        return this;
     }
 
     /**
@@ -111,6 +153,11 @@ public class Datum {
         this.players = players;
     }
 
+    public Datum withPlayers(List<Player> players) {
+        this.players = players;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -129,6 +176,11 @@ public class Datum {
     @JsonProperty("observers")
     public void setObservers(List<Observer> observers) {
         this.observers = observers;
+    }
+
+    public Datum withObservers(List<Observer> observers) {
+        this.observers = observers;
+        return this;
     }
 
     /**
@@ -151,6 +203,11 @@ public class Datum {
         this.coaches = coaches;
     }
 
+    public Datum withCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -169,6 +226,11 @@ public class Datum {
     @JsonProperty("teams")
     public void setTeams(List<Team> teams) {
         this.teams = teams;
+    }
+
+    public Datum withTeams(List<Team> teams) {
+        this.teams = teams;
+        return this;
     }
 
     /**
@@ -191,6 +253,11 @@ public class Datum {
         this.rounds = rounds;
     }
 
+    public Datum withRounds(List<Round> rounds) {
+        this.rounds = rounds;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -209,6 +276,11 @@ public class Datum {
     @JsonProperty("kills")
     public void setKills(List<Kill> kills) {
         this.kills = kills;
+    }
+
+    public Datum withKills(List<Kill> kills) {
+        this.kills = kills;
+        return this;
     }
 
     @Override

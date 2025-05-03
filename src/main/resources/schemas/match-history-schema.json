@@ -10,11 +10,15 @@
       "items": {
         "$ref": "#/definitions/Datum"
       }
+    },
+    "esportsSchedule": {
+      "$ref": "#/definitions/EsportsSchedule"
     }
   },
   "required": [
     "status",
-    "data"
+    "data",
+    "esportsSchedule"
   ],
   "definitions": {
     "Location": {
@@ -172,7 +176,6 @@
         },
         "premier": {
           "$ref": "#/definitions/Premier"
-          // *** Изменено: добавлена ссылка на Premier ***
         },
         "party_rr_penaltys": {
           "type": "array",
@@ -604,13 +607,37 @@
         },
         "premier_roster": {
           "$ref": "#/definitions/PremierRoster"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "has_won": {
+          "type": "boolean"
+        },
+        "game_wins": {
+          "type": "integer"
+        },
+        "record": {
+          "$ref": "#/definitions/Record"
         }
       },
       "required": [
         "team_id",
         "rounds",
         "won",
-        "premier_roster"
+        "premier_roster",
+        "name",
+        "code",
+        "icon",
+        "has_won",
+        "game_wins",
+        "record"
       ]
     },
     "Rounds": {
@@ -968,6 +995,150 @@
         "weapon",
         "secondary_fire_mode",
         "player_locations"
+      ]
+    },
+    "EsportsSchedule": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScheduleItem"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "ScheduleItem": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "vod": {
+          "type": "string"
+        },
+        "league": {
+          "$ref": "#/definitions/League"
+        },
+        "tournament": {
+          "$ref": "#/definitions/Tournament"
+        },
+        "match": {
+          "$ref": "#/definitions/EsportsMatch"
+        }
+      },
+      "required": [
+        "date",
+        "state",
+        "type",
+        "vod",
+        "league",
+        "tournament",
+        "match"
+      ]
+    },
+    "League": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "identifier",
+        "icon",
+        "region"
+      ]
+    },
+    "Tournament": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "season"
+      ]
+    },
+    "EsportsMatch": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "game_type": {
+          "$ref": "#/definitions/GameType"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "game_type",
+        "teams"
+      ]
+    },
+    "GameType": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type",
+        "count"
+      ]
+    },
+    "Record": {
+      "type": "object",
+      "properties": {
+        "wins": {
+          "type": "integer"
+        },
+        "losses": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "wins",
+        "losses"
       ]
     }
   }

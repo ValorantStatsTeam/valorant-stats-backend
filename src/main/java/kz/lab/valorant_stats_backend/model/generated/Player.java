@@ -1,7 +1,10 @@
 
 package kz.lab.valorant_stats_backend.model.generated;
 
+import java.io.Serializable;
 import javax.annotation.processing.Generated;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -27,7 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "economy"
 })
 @Generated("jsonschema2pojo")
-public class Player {
+public class Player implements Serializable
+{
 
     /**
      * 
@@ -35,6 +39,7 @@ public class Player {
      * 
      */
     @JsonProperty("puuid")
+    @NotNull
     private String puuid;
     /**
      * 
@@ -42,6 +47,7 @@ public class Player {
      * 
      */
     @JsonProperty("name")
+    @NotNull
     private String name;
     /**
      * 
@@ -49,6 +55,7 @@ public class Player {
      * 
      */
     @JsonProperty("tag")
+    @NotNull
     private String tag;
     /**
      * 
@@ -56,6 +63,7 @@ public class Player {
      * 
      */
     @JsonProperty("team_id")
+    @NotNull
     private String teamId;
     /**
      * 
@@ -63,6 +71,7 @@ public class Player {
      * 
      */
     @JsonProperty("platform")
+    @NotNull
     private String platform;
     /**
      * 
@@ -70,6 +79,7 @@ public class Player {
      * 
      */
     @JsonProperty("party_id")
+    @NotNull
     private String partyId;
     /**
      * 
@@ -77,6 +87,8 @@ public class Player {
      * 
      */
     @JsonProperty("agent")
+    @Valid
+    @NotNull
     private Agent agent;
     /**
      * 
@@ -84,6 +96,8 @@ public class Player {
      * 
      */
     @JsonProperty("stats")
+    @Valid
+    @NotNull
     private PlayerStats stats;
     /**
      * 
@@ -91,6 +105,8 @@ public class Player {
      * 
      */
     @JsonProperty("ability_casts")
+    @Valid
+    @NotNull
     private AbilityCasts abilityCasts;
     /**
      * 
@@ -98,6 +114,8 @@ public class Player {
      * 
      */
     @JsonProperty("tier")
+    @Valid
+    @NotNull
     private Tier tier;
     /**
      * 
@@ -105,6 +123,7 @@ public class Player {
      * 
      */
     @JsonProperty("card_id")
+    @NotNull
     private String cardId;
     /**
      * 
@@ -112,6 +131,7 @@ public class Player {
      * 
      */
     @JsonProperty("title_id")
+    @NotNull
     private String titleId;
     /**
      * 
@@ -119,6 +139,7 @@ public class Player {
      * 
      */
     @JsonProperty("prefered_level_border")
+    @NotNull
     private String preferedLevelBorder;
     /**
      * 
@@ -126,6 +147,7 @@ public class Player {
      * 
      */
     @JsonProperty("account_level")
+    @NotNull
     private Long accountLevel;
     /**
      * 
@@ -133,6 +155,7 @@ public class Player {
      * 
      */
     @JsonProperty("session_playtime_in_ms")
+    @NotNull
     private Long sessionPlaytimeInMs;
     /**
      * 
@@ -140,6 +163,8 @@ public class Player {
      * 
      */
     @JsonProperty("behavior")
+    @Valid
+    @NotNull
     private Behavior behavior;
     /**
      * 
@@ -147,7 +172,38 @@ public class Player {
      * 
      */
     @JsonProperty("economy")
+    @Valid
+    @NotNull
     private Economy economy;
+    private final static long serialVersionUID = 1137151460989359636L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Player() {
+    }
+
+    public Player(String puuid, String name, String tag, String teamId, String platform, String partyId, Agent agent, PlayerStats stats, AbilityCasts abilityCasts, Tier tier, String cardId, String titleId, String preferedLevelBorder, Long accountLevel, Long sessionPlaytimeInMs, Behavior behavior, Economy economy) {
+        super();
+        this.puuid = puuid;
+        this.name = name;
+        this.tag = tag;
+        this.teamId = teamId;
+        this.platform = platform;
+        this.partyId = partyId;
+        this.agent = agent;
+        this.stats = stats;
+        this.abilityCasts = abilityCasts;
+        this.tier = tier;
+        this.cardId = cardId;
+        this.titleId = titleId;
+        this.preferedLevelBorder = preferedLevelBorder;
+        this.accountLevel = accountLevel;
+        this.sessionPlaytimeInMs = sessionPlaytimeInMs;
+        this.behavior = behavior;
+        this.economy = economy;
+    }
 
     /**
      * 
@@ -167,6 +223,11 @@ public class Player {
     @JsonProperty("puuid")
     public void setPuuid(String puuid) {
         this.puuid = puuid;
+    }
+
+    public Player withPuuid(String puuid) {
+        this.puuid = puuid;
+        return this;
     }
 
     /**
@@ -189,6 +250,11 @@ public class Player {
         this.name = name;
     }
 
+    public Player withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -207,6 +273,11 @@ public class Player {
     @JsonProperty("tag")
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public Player withTag(String tag) {
+        this.tag = tag;
+        return this;
     }
 
     /**
@@ -229,6 +300,11 @@ public class Player {
         this.teamId = teamId;
     }
 
+    public Player withTeamId(String teamId) {
+        this.teamId = teamId;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -247,6 +323,11 @@ public class Player {
     @JsonProperty("platform")
     public void setPlatform(String platform) {
         this.platform = platform;
+    }
+
+    public Player withPlatform(String platform) {
+        this.platform = platform;
+        return this;
     }
 
     /**
@@ -269,6 +350,11 @@ public class Player {
         this.partyId = partyId;
     }
 
+    public Player withPartyId(String partyId) {
+        this.partyId = partyId;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -287,6 +373,11 @@ public class Player {
     @JsonProperty("agent")
     public void setAgent(Agent agent) {
         this.agent = agent;
+    }
+
+    public Player withAgent(Agent agent) {
+        this.agent = agent;
+        return this;
     }
 
     /**
@@ -309,6 +400,11 @@ public class Player {
         this.stats = stats;
     }
 
+    public Player withStats(PlayerStats stats) {
+        this.stats = stats;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -327,6 +423,11 @@ public class Player {
     @JsonProperty("ability_casts")
     public void setAbilityCasts(AbilityCasts abilityCasts) {
         this.abilityCasts = abilityCasts;
+    }
+
+    public Player withAbilityCasts(AbilityCasts abilityCasts) {
+        this.abilityCasts = abilityCasts;
+        return this;
     }
 
     /**
@@ -349,6 +450,11 @@ public class Player {
         this.tier = tier;
     }
 
+    public Player withTier(Tier tier) {
+        this.tier = tier;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -367,6 +473,11 @@ public class Player {
     @JsonProperty("card_id")
     public void setCardId(String cardId) {
         this.cardId = cardId;
+    }
+
+    public Player withCardId(String cardId) {
+        this.cardId = cardId;
+        return this;
     }
 
     /**
@@ -389,6 +500,11 @@ public class Player {
         this.titleId = titleId;
     }
 
+    public Player withTitleId(String titleId) {
+        this.titleId = titleId;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -407,6 +523,11 @@ public class Player {
     @JsonProperty("prefered_level_border")
     public void setPreferedLevelBorder(String preferedLevelBorder) {
         this.preferedLevelBorder = preferedLevelBorder;
+    }
+
+    public Player withPreferedLevelBorder(String preferedLevelBorder) {
+        this.preferedLevelBorder = preferedLevelBorder;
+        return this;
     }
 
     /**
@@ -429,6 +550,11 @@ public class Player {
         this.accountLevel = accountLevel;
     }
 
+    public Player withAccountLevel(Long accountLevel) {
+        this.accountLevel = accountLevel;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -447,6 +573,11 @@ public class Player {
     @JsonProperty("session_playtime_in_ms")
     public void setSessionPlaytimeInMs(Long sessionPlaytimeInMs) {
         this.sessionPlaytimeInMs = sessionPlaytimeInMs;
+    }
+
+    public Player withSessionPlaytimeInMs(Long sessionPlaytimeInMs) {
+        this.sessionPlaytimeInMs = sessionPlaytimeInMs;
+        return this;
     }
 
     /**
@@ -469,6 +600,11 @@ public class Player {
         this.behavior = behavior;
     }
 
+    public Player withBehavior(Behavior behavior) {
+        this.behavior = behavior;
+        return this;
+    }
+
     /**
      * 
      * (Required)
@@ -487,6 +623,11 @@ public class Player {
     @JsonProperty("economy")
     public void setEconomy(Economy economy) {
         this.economy = economy;
+    }
+
+    public Player withEconomy(Economy economy) {
+        this.economy = economy;
+        return this;
     }
 
     @Override
