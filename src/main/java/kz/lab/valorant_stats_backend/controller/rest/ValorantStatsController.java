@@ -2,9 +2,9 @@ package kz.lab.valorant_stats_backend.controller.rest;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import kz.lab.valorant_stats_backend.service.ValorantStatsService;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -20,25 +20,14 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @RestController
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RequestMapping("/api")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ValorantStatsController {
     ValorantStatsService statsService;
 
 
-//    @GetMapping("/v4/matches")
-//    public Mono<ResponseEntity<JsonNode>> getMatchHistoryByNameTag(
-//            @RequestParam String region,
-//            @RequestParam String platform,
-//            @RequestParam String name,
-//            @RequestParam String tag,
-//            @RequestParam(defaultValue = "henrikdev") String apiName) {
-//        log.info("Received request for match history: region={}, platform={}, name={}, tag={}, api={}",
-//                region, platform, name, tag, apiName);
-//        return statsService.getMatchHistoryByNameTag(region, platform, name, tag, apiName)
-//                .map(ResponseEntity::ok);
-//    }
+
 
 
 //    @GetMapping("/v1/esports/schedule")
@@ -66,8 +55,6 @@ public class ValorantStatsController {
         return statsService.getTeam(apiName, teamName)
                 .map(ResponseEntity::ok);
     }
-
-
 
 
 //    /**

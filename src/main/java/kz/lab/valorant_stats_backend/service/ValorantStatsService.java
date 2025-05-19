@@ -3,7 +3,6 @@ package kz.lab.valorant_stats_backend.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import kz.lab.valorant_stats_backend.service.factory.ValorantApiStrategyFactory;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -97,11 +96,7 @@ public class ValorantStatsService {
      * @param apiName имя API (по умолчанию "henrikdev")
      * @return {@link Mono} с историей матчей
      */
-    public Mono<MatchHistory> getMatchHistory(String region, String puuid, String apiName) {
-        log.info("Requesting match history for region: {}, puuid: {}, api: {}", region, puuid, apiName);
-        return strategyFactory.getStrategy(apiName)
-                .fetchMatchHistory(region, puuid);
-    }
+
 
 //    /**
 //     * Асинхронно получает MMR игрока.

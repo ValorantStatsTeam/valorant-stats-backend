@@ -2,8 +2,7 @@ package kz.lab.valorant_stats_backend.service.strategy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
-import kz.lab.valorant_stats_backend.model.generated.Player;
+
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -47,7 +46,7 @@ public interface ValorantApiStrategy {
      * @param puuid  уникальный идентификатор игрока
      * @return {@link Mono} с историей матчей
      */
-    Mono<MatchHistory> fetchMatchHistory(String region, String puuid);
+   // Mono<MatchHistory> fetchMatchHistory(String region, String puuid);
 
 //    /**
 //     * Асинхронно извлекает MMR игрока.

@@ -3,7 +3,7 @@ package kz.lab.valorant_stats_backend.service.strategy;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
+//import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -236,20 +236,20 @@ public class HenrikDevApiStrategy implements ValorantApiStrategy {
 //                });
 //    }
 
-    @Override
-    public Mono<MatchHistory> fetchMatchHistory(String region, String puuid) {
-        String url = String.format("%s/v3/by-puuid/matches/%s/%s", apiUrl, region, puuid);
-        log.info("Fetching match history from URL: {}", url);
-        return webClient.get()
-                .uri(url)
-                .header("Authorization", apiKey)
-                .retrieve()
-                .bodyToMono(MatchHistory.class)
-                .onErrorResume(e -> {
-                    log.error("Failed to fetch match history: {}", e.getMessage());
-                    return Mono.empty();
-                });
-    }
+//    @Override
+//    public Mono<MatchHistory> fetchMatchHistory(String region, String puuid) {
+//        String url = String.format("%s/v3/by-puuid/matches/%s/%s", apiUrl, region, puuid);
+//        log.info("Fetching match history from URL: {}", url);
+//        return webClient.get()
+//                .uri(url)
+//                .header("Authorization", apiKey)
+//                .retrieve()
+//                .bodyToMono(MatchHistory.class)
+//                .onErrorResume(e -> {
+//                    log.error("Failed to fetch match history: {}", e.getMessage());
+//                    return Mono.empty();
+//                });
+//    }
 
 //    @Override
 //    public Mono<MMRDetails> fetchMMRDetails(String region, String puuid) {
