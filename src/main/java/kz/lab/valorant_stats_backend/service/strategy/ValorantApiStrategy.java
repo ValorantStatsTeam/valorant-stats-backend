@@ -1,5 +1,7 @@
 package kz.lab.valorant_stats_backend.service.strategy;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import kz.lab.valorant_stats_backend.model.generated.Player;
 import reactor.core.publisher.Mono;
@@ -11,17 +13,13 @@ import java.util.List;
  */
 public interface ValorantApiStrategy {
 
+    Mono<JsonNode> fetchPlayers();
 
-    /**
-     * Асинхронно извлекает историю матчей игрока по имени и тегу.
-     *
-     * @param region   регион игрока (например, "eu")
-     * @param platform платформа игрока (например, "pc")
-     * @param name     имя игрока
-     * @param tag      тег игрока
-     * @return {@link Mono} с историей матчей
-     */
-    Mono<MatchHistory> fetchMatchHistoryByNameTag(String region, String platform, String name, String tag);
+    Mono<JsonNode> fetchTeam(String teamName);
+
+    Mono<JsonNode> fetchMatchHistoryByNameTag(String region, String platform, String name, String tag);
+
+    Mono<JsonNode> fetchEsportsSchedule();
 
 //    /**
 //     * Асинхронно извлекает статистику игроков из матчей.

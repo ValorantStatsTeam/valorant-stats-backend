@@ -1,5 +1,7 @@
 package kz.lab.valorant_stats_backend.controller.rest;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import kz.lab.valorant_stats_backend.service.ValorantStatsService;
 import lombok.AccessLevel;
@@ -8,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -18,32 +21,53 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ValorantStatsController {
     ValorantStatsService statsService;
 
-    /**
-     * Получает историю матчей игрока по имени и тегу.
-     *
-     * @param region   регион игрока (например, "eu")
-     * @param platform платформа игрока (например, "pc")
-     * @param name     имя игрока
-     * @param tag      тег игрока
-     * @param apiName  имя API (по умолчанию "henrikdev")
-     * @return {@link Mono} с {@link ResponseEntity}, содержащим историю матчей
-     */
-    @GetMapping("/v4/matches")
-    public Mono<ResponseEntity<MatchHistory>> getMatchHistoryByNameTag(
-            @RequestParam String region,
-            @RequestParam String platform,
-            @RequestParam String name,
-            @RequestParam String tag,
+
+//    @GetMapping("/v4/matches")
+//    public Mono<ResponseEntity<JsonNode>> getMatchHistoryByNameTag(
+//            @RequestParam String region,
+//            @RequestParam String platform,
+//            @RequestParam String name,
+//            @RequestParam String tag,
+//            @RequestParam(defaultValue = "henrikdev") String apiName) {
+//        log.info("Received request for match history: region={}, platform={}, name={}, tag={}, api={}",
+//                region, platform, name, tag, apiName);
+//        return statsService.getMatchHistoryByNameTag(region, platform, name, tag, apiName)
+//                .map(ResponseEntity::ok);
+//    }
+
+
+//    @GetMapping("/v1/esports/schedule")
+//    public Mono<ResponseEntity<JsonNode>> getMatchHistoryByNameTag(@RequestParam(defaultValue = "henrikdev") String apiName) {
+//        log.info("Received request for esports schedule: api={}", apiName);
+//        return statsService.getEsportsSchedule(apiName)
+//                .map(ResponseEntity::ok);
+//    }
+
+
+    @GetMapping("/players")
+    public Mono<ResponseEntity<JsonNode>> getPlayers(
             @RequestParam(defaultValue = "henrikdev") String apiName) {
-        log.info("Received request for match history: region={}, platform={}, name={}, tag={}, api={}",
-                region, platform, name, tag, apiName);
-        return statsService.getMatchHistoryByNameTag(region, platform, name, tag, apiName)
+        log.info("start players");
+        return statsService.getPlayers(apiName)
                 .map(ResponseEntity::ok);
     }
+
+
+    @GetMapping("/teams")
+    public Mono<ResponseEntity<JsonNode>> getTeams(
+            @RequestParam(defaultValue = "henrikdev") String apiName,
+            @RequestParam(name = "teamName", required = false) String teamName) {
+        log.info("start teams");
+        return statsService.getTeam(apiName, teamName)
+                .map(ResponseEntity::ok);
+    }
+
+
 
 
 //    /**

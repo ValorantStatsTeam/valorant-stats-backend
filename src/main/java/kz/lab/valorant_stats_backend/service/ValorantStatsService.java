@@ -1,6 +1,8 @@
 package kz.lab.valorant_stats_backend.service;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import kz.lab.valorant_stats_backend.model.generated.MatchHistory;
 import kz.lab.valorant_stats_backend.service.factory.ValorantApiStrategyFactory;
 import lombok.AccessLevel;
@@ -30,11 +32,29 @@ public class ValorantStatsService {
      * @param apiName  имя API (по умолчанию "henrikdev")
      * @return {@link Mono} с историей матчей
      */
-    public Mono<MatchHistory> getMatchHistoryByNameTag(String region, String platform, String name, String tag, String apiName) {
+    public Mono<JsonNode> getMatchHistoryByNameTag(String region, String platform, String name, String tag, String apiName) {
         log.info("Requesting match history for region: {}, platform: {}, name: {}, tag: {}, api: {}",
                 region, platform, name, tag, apiName);
         return strategyFactory.getStrategy(apiName)
                 .fetchMatchHistoryByNameTag(region, platform, name, tag);
+    }
+
+    public Mono<JsonNode> getEsportsSchedule(String apiName) {
+        log.info("Requesting match esports schedule: api: {}", apiName);
+        return strategyFactory.getStrategy(apiName)
+                .fetchEsportsSchedule();
+    }
+
+    public Mono<JsonNode> getPlayers(String apiName) {
+        log.info("start players");
+        return strategyFactory.getStrategy(apiName)
+                .fetchPlayers();
+    }
+
+    public Mono<JsonNode> getTeam(String apiName, String teamName) {
+        log.info("start team");
+        return strategyFactory.getStrategy(apiName)
+                .fetchTeam(teamName);
     }
 
 //    /**

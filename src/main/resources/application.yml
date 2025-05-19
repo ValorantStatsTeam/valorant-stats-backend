@@ -1,10 +1,10 @@
 server:
-  port: 8080
+  port: 9000
 
 valorant:
   api:
-    url: "https://api.henrikdev.xyz/valorant"
-    key: "HDEV-6def6ccf-6de3-4cbe-b21d-6dbe4e2c22b3"
+    url: "https://api.pandascore.co/valorant/"
+    key: "SsHh29rZals6s5dqJviygQuAOEWW6Q40hsb7zLWGwIJqMkTqdMk"
 
 logging:
   level:
